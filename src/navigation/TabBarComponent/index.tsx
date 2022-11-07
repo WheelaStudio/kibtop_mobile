@@ -1,5 +1,12 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Platform,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import { TabBarComponentTabButton } from './components/TabButton';
@@ -8,6 +15,8 @@ import MiddleSection from '@/assets/icons/tabBarMiddleSection.svg';
 import MiddleSectionButton from '@/assets/icons/tabBarMiddleSectionButton.svg';
 
 import styles from './styles';
+import { Shadow } from 'react-native-shadow-2';
+import { colors } from '@/constants/colors';
 
 export const TabBarComponent: React.FC<BottomTabBarProps> = ({
   state,
@@ -52,20 +61,29 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
   });
 
   return (
-    <View style={styles.wrapper}>
+    <ImageBackground
+      resizeMode="stretch"
+      style={styles.wrapper}
+      source={require('@/assets/icons/tabBarBodyCover.png')}
+    >
       <View style={[styles.sideContainer, styles.leftContainer]}>
         {buttons.slice(0, 2)}
       </View>
-      <MiddleSection width={120} style={styles.middleSection} />
+      <Image
+        source={require('@/assets/icons/tabBarMiddleSection.png')}
+        style={styles.middleSection}
+      />
       <View style={[styles.sideContainer, styles.rightContainer]}>
         {buttons.slice(2, 4)}
       </View>
       <TouchableOpacity style={styles.middleSectionButton}>
-        <MiddleSectionButton style={styles.middleSectionButtonIcon} />
+        {/* <MiddleSectionButton style={styles.middleSectionButtonIcon} /> */}
+        <Image
+          style={{ width: 90, height: 90 }}
+          source={require('@/assets/icons/tabBarMiddleSectionButton.png')}
+        />
       </TouchableOpacity>
-      <View style={styles.leftShadowCover} />
-      <View style={styles.rightShadowCover} />
       <Text style={styles.addAdvertText}>Add advert</Text>
-    </View>
+    </ImageBackground>
   );
 };

@@ -1,4 +1,5 @@
 import { colors } from '@/constants/colors';
+import {appFont} from '@/constants/fonts';
 import { Dimensions, StyleSheet } from 'react-native';
 
 const { width } = Dimensions.get('screen');
@@ -15,27 +16,24 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: '600',
     marginBottom: 8,
     color: colors.dark,
-    fontFamily: 'Open Sans',
+    fontFamily: appFont.Semibold,
   },
   description: {
-    fontWeight: '400',
     fontSize: 14,
     color: colors.dark,
     marginBottom: 13,
-    fontFamily: 'Open Sans',
+    fontFamily: appFont.Regular,
   },
   moreButtonContainer: {
     flexDirection: 'row',
   },
   moreButtonTitle: {
-    fontWeight: '400',
     fontSize: 12,
     letterSpacing: 2.59,
     marginRight: 5,
     color: colors.dark,
-    fontFamily: 'Open Sans',
+    fontFamily: appFont.Regular,
   },
 });

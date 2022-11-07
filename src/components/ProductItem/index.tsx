@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-
-import LikeIconOutlined from '@/assets/icons/likeIconOutlined.svg';
-import LikeIconFilled from '@/assets/icons/likeIconFilled.svg';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 import styles from './styles';
 
@@ -20,11 +17,14 @@ export const ProductItem: React.FC<Props> = ({ hasPriceInterval }) => {
           style={styles.likeButtonContainer}
           onPress={() => setLiked((state) => !state)}
         >
-          {liked ? (
-            <LikeIconFilled style={styles.likeIcon} />
-          ) : (
-            <LikeIconOutlined style={styles.likeIcon} />
-          )}
+          <Image
+            style={styles.likeIcon}
+            source={
+              liked
+                ? require('@/assets/icons/likeIconFilled.png')
+                : require('@/assets/icons/likeIconOutlined.png')
+            }
+          />
         </TouchableOpacity>
       </View>
       <View style={styles.titleContainer}>

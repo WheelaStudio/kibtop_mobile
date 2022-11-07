@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { colors } from '@/constants/colors';
-import { defaultFont } from '@/constants/fonts';
+import { appFont } from '@/constants/fonts';
 
 export default StyleSheet.create({
   container: {
@@ -21,7 +21,6 @@ export default StyleSheet.create({
     fontSize: 16,
     lineHeight: 20,
     color: colors.dark,
-    fontFamily: defaultFont,
-    fontWeight: '600',
+    fontFamily: appFont.Semibold,
   },
 });

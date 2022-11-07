@@ -1,7 +1,7 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
 import { colors } from '@/constants/colors';
-import { defaultFont } from '@/constants/fonts';
+import { appFont } from '@/constants/fonts';
 
 const { width } = Dimensions.get('screen');
 
@@ -22,10 +22,9 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: '600',
     letterSpacing: -0.5,
     color: colors.dark,
-    fontFamily: defaultFont,
+    fontFamily: appFont.Semibold,
   },
   divider: {
     width: 1,
@@ -36,14 +35,13 @@ export default StyleSheet.create({
   },
   subtitle: {
     fontSize: 11,
-    fontWeight: '400',
     lineHeight: 10,
     letterSpacing: -0.5,
     textAlign: 'left',
     opacity: 0.4,
     color: colors.dark,
     marginTop: 5,
-    fontFamily: defaultFont,
+    fontFamily: appFont.Regular,
   },
   titleContainer: {
     flexDirection: 'row',
@@ -54,27 +52,20 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
     paddingHorizontal: 15,
   },
-  likeIcon: {
-    shadowOpacity: 1,
-    shadowRadius: 5,
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: 'rgba(0, 0, 0, 0.65)',
-  },
   price: {
-    fontWeight: '700',
     fontSize: 20,
     letterSpacing: -0.5,
     textAlign: 'right',
     lineHeight: 20,
     color: colors.dark,
-    fontFamily: defaultFont,
+    fontFamily: appFont.Bold,
   },
   pricePrefix: {
-    fontWeight: '700',
     fontSize: 12,
-    letterSpacing: -0.5,
-    color: colors.dark,
-    opacity: 0.3,
-    fontFamily: defaultFont,
+    color: colors.semitransparentDark,
+  },
+  likeIcon: {
+    width: 30,
+    height: 30,
   },
 });

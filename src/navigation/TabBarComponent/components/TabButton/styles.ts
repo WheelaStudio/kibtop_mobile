@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { colors } from '@/constants/colors';
-import { defaultFont } from '@/constants/fonts';
+import { appFont } from '@/constants/fonts';
 
 export default StyleSheet.create({
   container: {
@@ -12,10 +12,9 @@ export default StyleSheet.create({
   title: {
     fontSize: 11,
     color: colors.dark,
-    fontFamily: defaultFont,
-    fontWeight: '400'
+    fontFamily: appFont.Regular,
   },
   titleFocused: {
-    fontWeight: 'bold',
+    fontFamily: appFont.Bold,
   },
 });

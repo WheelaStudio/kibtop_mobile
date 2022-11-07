@@ -1,6 +1,7 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
 import { colors } from '@/constants/colors';
+import {appFont} from '@/constants/fonts';
 
 const { width } = Dimensions.get('screen');
 
@@ -18,20 +19,18 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 15,
-    fontWeight: '600',
     color: colors.dark,
     height: 20,
     flex: 1,
-    fontFamily: 'Open Sans',
-    lineHeight: 27
+    fontFamily: appFont.Semibold,
+    lineHeight: 27,
   },
   price: {
-    fontWeight: '700',
     fontSize: 20,
     textAlign: 'right',
     letterSpacing: -0.5,
     color: colors.dark,
-    fontFamily: 'Open Sans',
+    fontFamily: appFont.Bold,
   },
   titleContainer: {
     flexDirection: 'row',
@@ -42,10 +41,9 @@ export default StyleSheet.create({
   },
   subtitle: {
     fontSize: 11,
-    fontWeight: '400',
     color: colors.dark,
     opacity: 0.4,
-    fontFamily: 'Open Sans',
+    fontFamily: appFont.Regular,
   },
   likeButtonContainer: {
     height: 30,
@@ -55,17 +53,13 @@ export default StyleSheet.create({
     right: 6,
   },
   likeIcon: {
-    shadowOpacity: 1,
-    shadowRadius: 5,
-    shadowOffset: { height: 0, width: 0 },
-    shadowColor: 'rgba(0, 0, 0, 0.65)',
+    width: 30,
+    height: 30,
   },
   pricePrefix: {
-    fontWeight: '700',
     fontSize: 12,
     letterSpacing: -0.5,
-    color: colors.dark,
-    opacity: 0.3,
-    fontFamily: 'Open Sans',
+    color: colors.semitransparentDark,
+    fontFamily: appFont.Bold,
   },
 });

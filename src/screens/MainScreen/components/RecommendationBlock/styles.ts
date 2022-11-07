@@ -1,4 +1,5 @@
 import { colors } from '@/constants/colors';
+import {appFont} from '@/constants/fonts';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -7,10 +8,9 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: '700',
     marginLeft: 15,
     color: colors.dark,
-    fontFamily: 'Open Sans',
+    fontFamily: appFont.Bold,
   },
   itemsContainer: {
     flexWrap: 'wrap',

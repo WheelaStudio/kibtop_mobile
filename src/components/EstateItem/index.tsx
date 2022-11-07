@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  FlatList,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-
-import LikeIconFilled from '@/assets/icons/likeIconFilled.svg';
-import LikeIconOutlined from '@/assets/icons/likeIconOutlined.svg';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 
 import { EstateItemPhotoListItem } from './components/PhotoListItem';
 
@@ -47,11 +39,14 @@ export const EstateItem: React.FC<Props> = ({ isRentItem }) => {
           <Text style={styles.subtitle}>announcement date</Text>
         </View>
         <TouchableOpacity onPress={() => setLiked((state) => !state)}>
-          {liked ? (
-            <LikeIconFilled style={styles.likeIcon} />
-          ) : (
-            <LikeIconOutlined style={styles.likeIcon} />
-          )}
+          <Image
+            style={styles.likeIcon}
+            source={
+              liked
+                ? require('@/assets/icons/likeIconFilled.png')
+                : require('@/assets/icons/likeIconOutlined.png')
+            }
+          />
         </TouchableOpacity>
       </View>
     </View>

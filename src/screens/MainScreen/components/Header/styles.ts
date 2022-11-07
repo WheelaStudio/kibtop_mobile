@@ -1,5 +1,7 @@
-import { colors } from '@/constants/colors';
 import { Dimensions, StyleSheet } from 'react-native';
+
+import { colors } from '@/constants/colors';
+import { shadowColor } from '@/utils/shadowColor';
 
 const { width } = Dimensions.get('screen');
 
@@ -10,7 +12,7 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    shadowColor: 'rgba(65, 64, 66, 0.05)',
+    shadowColor: shadowColor('rgba(65, 64, 66, 0.05)'),
     shadowOpacity: 1,
     shadowRadius: 4,
     shadowOffset: {
@@ -18,8 +20,8 @@ export default StyleSheet.create({
       width: 0,
     },
     paddingHorizontal: 15,
-    zIndex: 10,
-    elevation: 10,
+    zIndex: 4,
+    elevation: 4,
   },
   safeAreaView: {
     backgroundColor: colors.white,
