@@ -1,6 +1,7 @@
-import { colors } from '@/constants/colors';
-import {appFont} from '@/constants/fonts';
 import { Dimensions, StyleSheet } from 'react-native';
+
+import { colors } from '@/constants/colors';
+import { appFont } from '@/constants/fonts';
 
 const { width } = Dimensions.get('screen');
 

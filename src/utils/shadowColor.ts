@@ -1,5 +1,6 @@
-import { colors } from '@/constants/colors';
 import { Platform } from 'react-native';
+
+import { colors } from '@/constants/colors';
 
 /**
  * Replaces specified shadow color with black on Android in order

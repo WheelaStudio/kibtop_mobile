@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Image,
   ImageBackground,
-  Platform,
   Text,
   TouchableOpacity,
   View,
@@ -11,12 +10,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import { TabBarComponentTabButton } from './components/TabButton';
 
-import MiddleSection from '@/assets/icons/tabBarMiddleSection.svg';
-import MiddleSectionButton from '@/assets/icons/tabBarMiddleSectionButton.svg';
-
 import styles from './styles';
-import { Shadow } from 'react-native-shadow-2';
-import { colors } from '@/constants/colors';
 
 export const TabBarComponent: React.FC<BottomTabBarProps> = ({
   state,
