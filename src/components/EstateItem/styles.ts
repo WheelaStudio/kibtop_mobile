@@ -35,7 +35,7 @@ export default StyleSheet.create({
   },
   subtitle: {
     fontSize: 11,
-    lineHeight: 10,
+    lineHeight: 11,
     letterSpacing: -0.5,
     textAlign: 'left',
     opacity: 0.4,
