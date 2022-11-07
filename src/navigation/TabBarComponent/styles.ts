@@ -1,7 +1,7 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
 import { colors } from '@/constants/colors';
-import { defaultFont } from '@/constants/fonts';
+import { appFont } from '@/constants/fonts';
 
 const { width } = Dimensions.get('screen');
 
@@ -10,6 +10,11 @@ export default StyleSheet.create({
     width,
     backgroundColor: colors.transparent,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 95,
+    position: 'absolute',
+    bottom: 0,
+    paddingTop: 10,
   },
   safeAreaView: {
     backgroundColor: colors.white,
@@ -17,27 +22,14 @@ export default StyleSheet.create({
   sideContainer: {
     width: width / 2 - 42.5,
     height: 85,
-    backgroundColor: colors.white,
-    shadowColor: colors.dark,
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    shadowOffset: {
-      height: -3,
-      width: 0,
-    },
     flexDirection: 'row',
-    position: 'absolute',
-    bottom: 0,
-    zIndex: 3,
     paddingTop: 13,
     paddingBottom: 27,
   },
   leftContainer: {
-    left: 0,
     borderTopLeftRadius: 20,
   },
   rightContainer: {
-    right: 0,
     borderTopRightRadius: 20,
   },
   middleSectionButton: {
@@ -47,27 +39,18 @@ export default StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    left: width / 2 - 31,
-    zIndex: 1,
-  },
-  middleSectionButtonIcon: {
-    shadowColor: 'rgba(65, 64, 66, 0.5)',
-    shadowOffset: { height: 1, width: 0 },
-    shadowRadius: 8,
-    shadowOpacity: 1,
+    left: width / 2 - 30,
+    zIndex: -2,
   },
   middleSection: {
     position: 'absolute',
-    bottom: 0,
-    width: 120,
+    bottom: 1,
+    width: 90,
+    height: 85,
     justifyContent: 'center',
     alignItems: 'center',
-    left: width / 2 - 60,
-    zIndex: 2,
-    shadowColor: 'rgba(65, 64, 66, 0.5)',
-    shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 5,
-    shadowOpacity: 1,
+    left: width / 2 - 45,
+    zIndex: -1,
   },
   leftShadowCover: {
     width: 10,
@@ -94,7 +77,6 @@ export default StyleSheet.create({
     zIndex: 10,
     fontSize: 11,
     color: colors.dark,
-    fontWeight: '600',
-    fontFamily: defaultFont,
+    fontFamily: appFont.Semibold,
   },
 });
