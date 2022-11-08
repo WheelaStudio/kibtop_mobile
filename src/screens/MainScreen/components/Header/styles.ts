@@ -19,7 +19,7 @@ export default StyleSheet.create({
       height: 4,
       width: 0,
     },
-    paddingHorizontal: 15,
+    paddingLeft: 15,
     zIndex: 4,
     elevation: 4,
   },
@@ -42,5 +42,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  scrollViewContainer: {
+    paddingLeft: 15,
   },
 });

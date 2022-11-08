@@ -7,7 +7,7 @@ export default StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    minWidth: 65,
+    marginRight: 30,
   },
   title: {
     fontSize: 11,
@@ -15,4 +15,7 @@ export default StyleSheet.create({
     color: colors.dark,
     fontFamily: appFont.Regular,
   },
+  singleButton: {
+    marginRight: 0
+  }
 });
