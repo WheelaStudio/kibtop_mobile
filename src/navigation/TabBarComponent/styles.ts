@@ -20,7 +20,7 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
   },
   sideContainer: {
-    width: width / 2 - 52,
+    width: width / 2 - 50,
     height: 90,
     flexDirection: 'row',
     paddingTop: 13,
