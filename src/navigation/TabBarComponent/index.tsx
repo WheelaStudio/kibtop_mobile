@@ -55,29 +55,45 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
   });
 
   return (
-    <ImageBackground
-      resizeMode="stretch"
-      style={styles.wrapper}
-      source={require('@/assets/icons/tabBarBodyCover.png')}
-    >
-      <View style={[styles.sideContainer, styles.leftContainer]}>
-        {buttons.slice(0, 2)}
+    <View style={styles.wrapper}>
+      <View style={{ flexDirection: 'row', height: 90 }}>
+        <Image
+          source={require('@/assets/icons/tabBarLeftCorner.png')}
+          style={styles.corner}
+        />
+        <ImageBackground
+          source={require('@/assets/icons/tabBarCover.png')}
+          style={[styles.sideContainer, styles.leftSideContainer]}
+          resizeMode="stretch"
+        >
+          {buttons.slice(0, 2)}
+        </ImageBackground>
+      </View>
+      <View style={{ flexDirection: 'row' }}>
+        <ImageBackground
+          source={require('@/assets/icons/tabBarCoverRight.png')}
+          style={[styles.sideContainer, styles.rightSideContainer]}
+          resizeMode="stretch"
+        >
+          {buttons.slice(2, 4)}
+        </ImageBackground>
+        <Image
+          source={require('@/assets/icons/tabBarRightCorner.png')}
+          style={styles.corner}
+        />
       </View>
       <Image
         source={require('@/assets/icons/tabBarMiddleSection.png')}
         style={styles.middleSection}
       />
-      <View style={[styles.sideContainer, styles.rightContainer]}>
-        {buttons.slice(2, 4)}
-      </View>
       <TouchableOpacity style={styles.middleSectionButton}>
-        {/* <MiddleSectionButton style={styles.middleSectionButtonIcon} /> */}
         <Image
           style={{ width: 90, height: 90 }}
           source={require('@/assets/icons/tabBarMiddleSectionButton.png')}
         />
       </TouchableOpacity>
       <Text style={styles.addAdvertText}>Add advert</Text>
-    </ImageBackground>
+      <View style={styles.bottomCover} />
+    </View>
   );
 };

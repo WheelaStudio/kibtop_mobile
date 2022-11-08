@@ -2,6 +2,7 @@ import { Dimensions, StyleSheet } from 'react-native';
 
 import { colors } from '@/constants/colors';
 import { appFont } from '@/constants/fonts';
+import { isTablet } from '@/utils/isTablet';
 
 const { width } = Dimensions.get('screen');
 
@@ -10,31 +11,33 @@ export default StyleSheet.create({
     width,
     backgroundColor: colors.transparent,
     flexDirection: 'row',
+    height: 90,
     justifyContent: 'space-between',
-    height: 95,
     position: 'absolute',
     bottom: 0,
-    paddingTop: 10,
   },
   safeAreaView: {
     backgroundColor: colors.white,
   },
   sideContainer: {
-    width: width / 2 - 42.5,
-    height: 85,
+    width: width / 2 - 52,
+    height: 90,
     flexDirection: 'row',
     paddingTop: 13,
     paddingBottom: 27,
+    justifyContent: isTablet() ? 'space-evenly' : 'space-between',
   },
-  leftContainer: {
-    borderTopLeftRadius: 20,
+  leftSideContainer: {
+    paddingLeft: '4%',
+    paddingRight: 20,
   },
-  rightContainer: {
-    borderTopRightRadius: 20,
+  rightSideContainer: {
+    paddingLeft: 20,
+    paddingRight: '4%',
   },
   middleSectionButton: {
     position: 'absolute',
-    bottom: 31,
+    bottom: 27,
     width: 90,
     height: 90,
     justifyContent: 'center',
@@ -44,13 +47,13 @@ export default StyleSheet.create({
   },
   middleSection: {
     position: 'absolute',
-    bottom: 1,
+    bottom: -2.5,
     width: 90,
     height: 85,
     justifyContent: 'center',
     alignItems: 'center',
     left: width / 2 - 45,
-    zIndex: -1,
+    zIndex: 1,
   },
   addAdvertText: {
     position: 'absolute',
@@ -60,5 +63,18 @@ export default StyleSheet.create({
     fontSize: 11,
     color: colors.dark,
     fontFamily: appFont.Semibold,
+  },
+  corner: {
+    height: 83,
+    width: 17,
+    resizeMode: 'contain',
+    marginBottom: 7,
+  },
+  bottomCover: {
+    backgroundColor: '#FFFFFF',
+    width,
+    height: 8,
+    position: 'absolute',
+    bottom: 0,
   },
 });
