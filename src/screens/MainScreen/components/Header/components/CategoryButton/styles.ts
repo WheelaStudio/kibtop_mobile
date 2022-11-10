@@ -7,13 +7,13 @@ export default StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 30,
+    marginRight: 20,
   },
   title: {
     fontSize: 11,
     marginTop: 11,
     color: colors.dark,
-    fontFamily: appFont.Regular,
+    fontFamily: appFont.Semibold,
   },
   singleButton: {
     marginRight: 0

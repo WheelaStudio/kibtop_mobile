@@ -46,4 +46,8 @@ export default StyleSheet.create({
   scrollViewContainer: {
     paddingLeft: 15,
   },
+  categoryButtonImage: {
+    width: 30,
+    height: 30
+  }
 });
