@@ -31,7 +31,6 @@ export class BaseSelect extends React.Component<Props, {}> {
       this.handleKeyboardHide.bind(this)
     );
   }
-
   componentWillUnmount() {
     this.keyboardDidHideSubscription?.remove();
   }
@@ -47,7 +46,8 @@ export class BaseSelect extends React.Component<Props, {}> {
   private handleKeyboardHide() {
     this.modalRef.current?.snapToIndex(0);
   }
-render() {
+
+  render() {
     const {
       snapPoints = ['60%'],
       children,
