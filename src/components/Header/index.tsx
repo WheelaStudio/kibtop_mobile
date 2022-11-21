@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import HeaderArrowLeftIcon from '@/assets/icons/headerArrowLeftIcon.svg';
 
 import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
 
 interface Props {
   title: string;
