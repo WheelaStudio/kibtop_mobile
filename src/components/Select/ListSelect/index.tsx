@@ -25,12 +25,17 @@ export const ListSelect: React.FC<Props> = ({ title, options }) => {
         .map((x) => x.toUpperCase())
         .join('_');
 
+    console.log('LISTEN FOR EVENTS WITH NAME', eventNameRef.current);
+
     subscriptionRef.current = DeviceEventEmitter.addListener(
       eventNameRef.current,
       handleChange
     );
 
-    return () => subscriptionRef.current?.remove();
+    return () => {
+      console.log('REMOVE EVENT WITH NAME', eventNameRef.current);
+      subscriptionRef.current?.remove();
+    };
   }, []);
 
   useEffect(() => {
@@ -38,6 +43,8 @@ export const ListSelect: React.FC<Props> = ({ title, options }) => {
   }, [title, options]);
 
   function handleChange(index: number) {
+    console.log('HANDLE CHANGE', currentValue);
+    console.log('OPTIONS', options);
     setCurrentValue(options[index]);
   }
 
