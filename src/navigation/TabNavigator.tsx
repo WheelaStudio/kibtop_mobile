@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { MainScreen } from '@/screens/MainScreen';
+import { CategoriesListScreen } from '@/screens/CategoriesListScreen';
 
 import { TabBarComponent } from './TabBarComponent';
 import { TabBarIcon } from './TabBarIcon';
@@ -39,7 +40,7 @@ export const TabNavigator = () => {
       />
       <Tab.Screen
         name="FavoritesTab"
-        component={MainScreen}
+        component={CategoriesListScreen}
         options={{
           title: 'Favorites',
           tabBarIcon: (props) => (
