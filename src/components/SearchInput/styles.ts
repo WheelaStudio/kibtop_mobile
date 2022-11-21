@@ -1,7 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 import { colors } from '@/constants/colors';
 import { appFont } from '@/constants/fonts';
+
+const { width } = Dimensions.get('screen');
 
 export default StyleSheet.create({
   container: {
@@ -22,5 +24,13 @@ export default StyleSheet.create({
     lineHeight: 20,
     color: colors.dark,
     fontFamily: appFont.Semibold,
+  },
+  sqaredContainer: {
+    borderRadius: 8.91,
+  },
+  halfWidthContainer: {
+    width: (width - 30 - 16) / 2,
+    marginHorizontal: 8,
+    borderWidth: 0,
   },
 });

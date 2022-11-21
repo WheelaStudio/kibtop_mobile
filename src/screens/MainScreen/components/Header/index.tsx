@@ -6,26 +6,33 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import HeaderSettingsIcon from '@/assets/icons/headerSettingsIcon.svg';
 import AllCategoriesIcon from '@/assets/icons/allCategoriesIcon.svg';
+import HeaderSearchIcon from '@/assets/icons/headerSearchIcon.svg';
 
 import { MainScreenHeaderCategoryButton } from './components/CategoryButton';
 import { MainScreenHeaderDivider } from './components/Divider';
-import { MainScreenHeaderSearchInput } from './components/SearchInput';
+import { SearchInput } from '@/components/SearchInput';
 
 import styles from './styles';
 
 interface Props {}
 
 export const MainScreenHeader: React.FC<Props> = ({}) => {
+  const navigation = useNavigation();
+
   return (
     <>
       <SafeAreaView style={styles.safeAreaView} />
       <View style={styles.container}>
         <View style={styles.searchLineContainer}>
-          <MainScreenHeaderSearchInput />
-          <TouchableOpacity style={styles.settingsButtonContainer}>
+          <SearchInput Icon={HeaderSearchIcon} placeholder="Search Product" />
+          <TouchableOpacity
+            style={styles.settingsButtonContainer}
+            onPress={() => navigation.navigate('FiltersScreen')}
+          >
             <HeaderSettingsIcon />
           </TouchableOpacity>
         </View>
