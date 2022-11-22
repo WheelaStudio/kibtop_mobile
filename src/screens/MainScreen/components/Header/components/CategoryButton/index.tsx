@@ -22,7 +22,11 @@ export const MainScreenHeaderCategoryButton: React.FC<Props> = ({
       style={[styles.container, singleButton && styles.singleButton]}
       onPress={onPress}
     >
-      <IconComponent width={30} height={30} />
+      <IconComponent
+        width={36}
+        height={36}
+        style={[singleButton && { marginBottom: 4, marginTop: 5 }]}
+      />
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );

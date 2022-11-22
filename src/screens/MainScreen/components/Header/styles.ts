@@ -10,8 +10,6 @@ export default StyleSheet.create({
     height: 135,
     width,
     backgroundColor: colors.white,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
     shadowColor: shadowColor('rgba(65, 64, 66, 0.05)'),
     shadowOpacity: 1,
     shadowRadius: 4,
@@ -40,14 +38,16 @@ export default StyleSheet.create({
   categoriesButtonsRow: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'space-between',
   },
   scrollViewContainer: {
     paddingLeft: 15,
+    paddingRight: 100,
+    height: 75,
   },
   categoryButtonImage: {
-    width: 30,
-    height: 30
-  }
+    width: 45,
+    height: 45,
+  },
 });

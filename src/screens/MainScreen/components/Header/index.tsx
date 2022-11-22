@@ -110,7 +110,17 @@ export const MainScreenHeader: React.FC<Props> = ({}) => {
               )}
             />
             <MainScreenHeaderCategoryButton
-              title="House and garden"
+              title={'Fashion\nand style'}
+              onPress={() => null}
+              IconComponent={() => (
+                <Image
+                  source={require('@/assets/icons/fashionAndStyleCategoryIcon.png')}
+                  style={styles.categoryButtonImage}
+                />
+              )}
+            />
+            <MainScreenHeaderCategoryButton
+              title={'House and\ngarden'}
               onPress={() => null}
               IconComponent={() => (
                 <Image
@@ -119,6 +129,7 @@ export const MainScreenHeader: React.FC<Props> = ({}) => {
                 />
               )}
             />
+            <View style={{width: 15}} />
           </ScrollView>
         </View>
       </View>

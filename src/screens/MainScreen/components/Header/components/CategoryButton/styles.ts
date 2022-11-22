@@ -5,15 +5,19 @@ import { appFont } from '@/constants/fonts';
 
 export default StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    marginRight: 20,
+    marginRight: 10,
+    height: 75,
+    minWidth: 60,
   },
   title: {
     fontSize: 11,
-    marginTop: 11,
+    lineHeight: 11,
     color: colors.dark,
     fontFamily: appFont.Semibold,
+    textAlign: 'center',
+    marginTop: 7,
   },
   singleButton: {
     marginRight: 0
