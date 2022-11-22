@@ -7,7 +7,7 @@ const { width } = Dimensions.get('screen');
 
 export default StyleSheet.create({
   container: {
-    height: 135,
+    height: 140,
     width,
     backgroundColor: colors.white,
     shadowColor: shadowColor('rgba(65, 64, 66, 0.05)'),
@@ -40,6 +40,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
+    marginBottom: 5,
   },
   scrollViewContainer: {
     paddingLeft: 15,
