@@ -75,7 +75,7 @@ export const CategoryScreenHeader: React.FC<Props> = ({}) => {
               title="Sorting"
               options={['Default', 'Cheaper', 'Expensive']}
               SmallButtonIcon={SmallButtonArrowDown}
-              prefix="Sort"
+              hasPrefix
               showValue
             />
           </View>
