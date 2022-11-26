@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { FlatList, Platform, View } from 'react-native';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 
@@ -18,14 +18,35 @@ interface Props {
 export const SearchSelect: React.FC<Props> = ({ title }) => {
   const baseSelectRef = useRef<BaseSelect | null>(null);
 
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [selectedValue, setSelectedValue] = useState<string>('');
+
   const data = ['BMW', 'Audi', 'Mercedes-Benz'];
+
+  const filteredData = useMemo(() => {
+    const result = data.filter((x) => x.includes(searchValue));
+
+    if (result.length === 0) return data;
+
+    return result;
+  }, [searchValue, data]);
 
   function handleClose() {
     baseSelectRef.current?.close();
   }
 
+  function handleListItemPress(value: string) {
+    setSelectedValue(value);
+    handleClose();
+  }
+
   return (
-    <BaseSelect title={title} ref={baseSelectRef} snapPoints={['70%']}>
+    <BaseSelect
+      title={title}
+      ref={baseSelectRef}
+      snapPoints={['70%']}
+      value={selectedValue || null}
+    >
       <View style={styles.headerContainer}>
         <SearchInput
           placeholder="Brand name"
@@ -33,17 +54,20 @@ export const SearchSelect: React.FC<Props> = ({ title }) => {
           CustomTextInputComponent={
             Platform.OS === 'ios' ? BottomSheetTextInput : undefined
           }
+          value={searchValue}
+          onChangeText={setSearchValue}
         />
         <Button ghost fullWidth={false} onPress={handleClose}>
           Cancel
         </Button>
       </View>
       <FlatList
-        data={data}
+        data={filteredData}
         renderItem={({ item, index }) => (
           <SearchSelectListItem
             title={item}
             noBorder={data.length - 1 === index}
+            onPress={() => handleListItemPress(item)}
           />
         )}
       />

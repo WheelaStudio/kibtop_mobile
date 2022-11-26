@@ -8,6 +8,7 @@ export interface ICategory {
   title: string;
   iconImage: ImageRequireSource | React.FC<SvgProps>;
   filters: IFilter[];
+  titleForHeader?: string;
 }
 
 export interface IFilter {
@@ -213,6 +214,7 @@ export const CategoriesList: ICategory[] = [
   },
   {
     title: 'House and garden',
+    titleForHeader: 'House\nand garden',
     iconImage: require('@/assets/icons/houseAndGardenCategoryIcon.png'),
     filters: [
       {
@@ -232,6 +234,7 @@ export const CategoriesList: ICategory[] = [
   },
   {
     title: 'Fashion and style',
+    titleForHeader: 'Fashion\nand style',
     iconImage: require('@/assets/icons/fashionAndStyleCategoryIcon.png'),
     filters: [
       {

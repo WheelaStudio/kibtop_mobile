@@ -5,6 +5,7 @@ import { MainScreen } from '@/screens/MainScreen';
 
 import { TabBarComponent } from './TabBarComponent';
 import { TabBarIcon } from './TabBarIcon';
+import { HomeStackNavigator } from './HomeStackNavigator';
 
 import HomeIconFilled from '@/assets/icons/tabBarHomeIconFilled.svg';
 import HomeIconOutlined from '@/assets/icons/tabBarHomeIconOutlined.svg';
@@ -25,7 +26,7 @@ export const TabNavigator = () => {
     >
       <Tab.Screen
         name="HomeTab"
-        component={MainScreen}
+        component={HomeStackNavigator}
         options={{
           title: 'Home',
           tabBarIcon: (props) => (

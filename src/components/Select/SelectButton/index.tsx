@@ -21,7 +21,7 @@ export const SelectButton: React.FC<Props> = ({
       style={[styles.container, halfWidth && styles.halfWidthContainer]}
       onPress={() => onPress()}
     >
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title} numberOfLines={1}>{title}</Text>
       <SelectArrowDownIcon width={30} height={30} />
     </TouchableOpacity>
   );

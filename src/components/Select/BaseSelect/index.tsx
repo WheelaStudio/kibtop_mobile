@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
 import { EventSubscription, Keyboard, Text, View } from 'react-native';
 import { BottomSheetBackdrop, BottomSheetModal } from '@gorhom/bottom-sheet';
+import { SvgProps } from 'react-native-svg';
 
 import { Button } from '@/components/Button';
-import { SelectButton } from '@/components/Select';
+import { SelectButton, SmallSelectButton } from '@/components/Select';
 import { BaseSelectHandle } from './components/Handle';
 
 import styles from './styles';
@@ -13,6 +14,11 @@ interface Props {
   children: ReactNode;
   halfWidth?: boolean;
   snapPoints?: number[] | string[];
+  small?: boolean;
+  SmallButtonIcon?: React.FC<SvgProps>;
+  value?: string | null;
+  showValue?: boolean;
+  hasPrefix?: boolean;
 }
 
 export class BaseSelect extends React.Component<Props, {}> {
@@ -53,7 +59,16 @@ export class BaseSelect extends React.Component<Props, {}> {
       children,
       title,
       halfWidth = false,
+      small = false,
+      SmallButtonIcon,
+      value,
+      showValue = true,
+      hasPrefix = false,
     } = this.props;
+
+    const valueWithPrefix = value ? [title, value].join(': ') : title;
+    const valueString = hasPrefix ? valueWithPrefix : value || title;
+    const buttonTitle = showValue ? valueString : title;
 
     return (
       <>
@@ -78,11 +93,19 @@ export class BaseSelect extends React.Component<Props, {}> {
             <Button onPress={this.close.bind(this)}>Apply</Button>
           </View>
         </BottomSheetModal>
-        <SelectButton
-          title={title}
-          onPress={this.open.bind(this)}
-          halfWidth={halfWidth}
-        />
+        {small && SmallButtonIcon ? (
+          <SmallSelectButton
+            title={buttonTitle}
+            Icon={SmallButtonIcon}
+            onPress={this.open.bind(this)}
+          />
+        ) : (
+          <SelectButton
+            title={buttonTitle}
+            onPress={this.open.bind(this)}
+            halfWidth={halfWidth}
+          />
+        )}
       </>
     );
   }

@@ -10,8 +10,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Header } from '@/components/Header';
 import { Button } from '@/components/Button';
 import { Divider } from '@/components/Divider';
+import { FiltersList } from '@/components/FiltersList';
 import { SelectButton, RadioSelect, LocationSelect } from '@/components/Select';
-import { FiltersScreenFiltersList } from './components/FiltersList';
 
 import { CategoriesList } from '@/constants/categories';
 
@@ -44,13 +44,14 @@ export const FiltersScreen: React.FC<{}> = ({}) => {
         onPress={() => navigation.navigate('CategoriesListScreen')}
       />
       <View style={styles.categoryFiltersContainer}>
-        <FiltersScreenFiltersList categoryIndex={currentCategoryIndex} />
+        <FiltersList categoryIndex={currentCategoryIndex} />
       </View>
       <Divider />
       <LocationSelect title="Location" />
       <RadioSelect
         title="Sorting"
         options={['Default', 'Cheaper', 'Expensive']}
+        hasPrefix
       />
       <Button onPress={() => null}>Show ads</Button>
       <Button ghost onPress={() => null}>

@@ -1,5 +1,10 @@
 import React from 'react';
-import { TextInput, TextInputProps, View } from 'react-native';
+import {
+  KeyboardTypeOptions,
+  TextInput,
+  TextInputProps,
+  View,
+} from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 import { colors } from '@/constants/colors';
@@ -12,6 +17,9 @@ interface Props {
   sqared?: boolean;
   halfWidth?: boolean;
   CustomTextInputComponent?: React.FC<TextInputProps>;
+  keyboardType?: KeyboardTypeOptions;
+  value: string;
+  onChangeText: (value: string) => void;
 }
 
 export const SearchInput: React.FC<Props> = ({
@@ -19,7 +27,10 @@ export const SearchInput: React.FC<Props> = ({
   placeholder,
   sqared = false,
   halfWidth = false,
-  CustomTextInputComponent = TextInput
+  CustomTextInputComponent = TextInput,
+  keyboardType = 'default',
+  value,
+  onChangeText,
 }) => {
   return (
     <View
@@ -34,6 +45,9 @@ export const SearchInput: React.FC<Props> = ({
         style={styles.input}
         placeholder={placeholder}
         placeholderTextColor={colors.grayText}
+        keyboardType={keyboardType}
+        value={value}
+        onChangeText={onChangeText}
       />
     </View>
   );

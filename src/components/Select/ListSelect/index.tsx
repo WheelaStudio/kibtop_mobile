@@ -10,6 +10,7 @@ interface Props {
 }
 
 export const ListSelect: React.FC<Props> = ({ title, options }) => {
+  console.log('LIST SELECT', title);
   const [currentValue, setCurrentValue] = useState<string>();
 
   const subscriptionRef = useRef<EventSubscription>();
@@ -18,6 +19,9 @@ export const ListSelect: React.FC<Props> = ({ title, options }) => {
   const navigation = useNavigation();
 
   useEffect(() => {
+    subscriptionRef.current?.remove();
+    setCurrentValue(undefined);
+
     eventNameRef.current =
       'LIST_SELECT_ON_CHANGE_EVENT_' +
       title
@@ -31,15 +35,13 @@ export const ListSelect: React.FC<Props> = ({ title, options }) => {
     );
 
     return () => {
+      console.log('remove subscriptionRef');
       subscriptionRef.current?.remove();
     };
-  }, []);
-
-  useEffect(() => {
-    setCurrentValue(undefined);
   }, [title, options]);
 
   function handleChange(index: number) {
+    console.log('TITLE', options, index);
     setCurrentValue(options[index]);
   }
 

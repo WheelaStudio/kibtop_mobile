@@ -7,7 +7,14 @@ import {
 } from '@/components/Select';
 import { SelectTypesEnum } from '@/constants/categories';
 
-export function selectComponentBySelectType(selectType: SelectTypesEnum) {
+export function selectComponentBySelectType(
+  selectType: SelectTypesEnum,
+  replaceListsWithRadio: boolean = false
+) {
+  if (selectType === SelectTypesEnum.LIST && replaceListsWithRadio) {
+    return RadioSelect;
+  }
+
   switch (selectType) {
     case SelectTypesEnum.RADIO:
       return RadioSelect;

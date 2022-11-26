@@ -8,10 +8,12 @@ import { selectComponentBySelectType } from './utils';
 
 interface Props {
   categoryIndex: number;
+  replaceListsWithRadio?: boolean;
 }
 
-export const FiltersScreenFiltersList: React.FC<Props> = ({
+export const FiltersList: React.FC<Props> = ({
   categoryIndex,
+  replaceListsWithRadio = false,
 }) => {
   return (
     <>
@@ -36,7 +38,10 @@ export const FiltersScreenFiltersList: React.FC<Props> = ({
             ].includes(type) &&
             selectType !== undefined
           ) {
-            ComponentToRender = selectComponentBySelectType(selectType);
+            ComponentToRender = selectComponentBySelectType(
+              selectType,
+              replaceListsWithRadio
+            );
           }
 
           return ComponentToRender && <ComponentToRender {...props} />;

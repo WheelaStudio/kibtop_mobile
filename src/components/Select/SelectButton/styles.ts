@@ -35,6 +35,7 @@ export default StyleSheet.create({
     fontSize: 16,
     letterSpacing: -0.5,
     color: colors.dark,
+    flex: 1,
   },
   halfWidthContainer: {
     width: (width - 30 - 13) / 2,

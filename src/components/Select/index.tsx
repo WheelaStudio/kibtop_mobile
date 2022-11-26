@@ -6,3 +6,4 @@ export { RangeSelect } from './RangeSelect';
 export { ListSelect } from './ListSelect';
 export { BaseSelect } from './BaseSelect';
 export { SearchSelect } from './SearchSelect';
+export { SmallSelectButton } from './SmallSelectButton'

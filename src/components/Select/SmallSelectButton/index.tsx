@@ -1,24 +1,23 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 import styles from './styles';
 
 interface Props {
   title: string;
-  noBorder?: boolean;
+  Icon: React.FC<SvgProps>;
   onPress: () => void;
 }
 
-export const SearchSelectListItem: React.FC<Props> = ({
+export const SmallSelectButton: React.FC<Props> = ({
   title,
-  noBorder,
+  Icon,
   onPress,
 }) => {
   return (
-    <TouchableOpacity
-      style={[styles.container, noBorder && styles.noBorder]}
-      onPress={() => onPress()}
-    >
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Icon width={15} height={15} />
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );

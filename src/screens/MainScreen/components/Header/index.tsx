@@ -17,6 +17,7 @@ import { MainScreenHeaderDivider } from './components/Divider';
 import { SearchInput } from '@/components/SearchInput';
 
 import styles from './styles';
+import { CategoriesList } from '@/constants/categories';
 
 interface Props {}
 
@@ -39,7 +40,11 @@ export const MainScreenHeader: React.FC<Props> = ({}) => {
         <View style={styles.categoriesButtonsRow}>
           <MainScreenHeaderCategoryButton
             title="All categories"
-            onPress={() => null}
+            onPress={() =>
+              navigation.navigate('CategoryScreen', {
+                categoryId: 0,
+              })
+            }
             IconComponent={AllCategoriesIcon}
             singleButton
           />
@@ -49,87 +54,25 @@ export const MainScreenHeader: React.FC<Props> = ({}) => {
             showsHorizontalScrollIndicator={false}
             style={styles.scrollViewContainer}
           >
-            <MainScreenHeaderCategoryButton
-              title="Real estate"
-              onPress={() => null}
-              IconComponent={() => (
-                <Image
-                  source={require('@/assets/icons/realEstateCategoryIcon.png')}
-                  style={styles.categoryButtonImage}
-                />
-              )}
-            />
-            <MainScreenHeaderCategoryButton
-              title="Auto"
-              onPress={() => null}
-              IconComponent={() => (
-                <Image
-                  source={require('@/assets/icons/autoCategoryIcon.png')}
-                  style={styles.categoryButtonImage}
-                />
-              )}
-            />
-            <MainScreenHeaderCategoryButton
-              title="Job"
-              onPress={() => null}
-              IconComponent={() => (
-                <Image
-                  source={require('@/assets/icons/jobCategoryIcon.png')}
-                  style={styles.categoryButtonImage}
-                />
-              )}
-            />
-            <MainScreenHeaderCategoryButton
-              title="Services"
-              onPress={() => null}
-              IconComponent={() => (
-                <Image
-                  source={require('@/assets/icons/servicesCategoryIcon.png')}
-                  style={styles.categoryButtonImage}
-                />
-              )}
-            />
-            <MainScreenHeaderCategoryButton
-              title="For kids"
-              onPress={() => null}
-              IconComponent={() => (
-                <Image
-                  source={require('@/assets/icons/kidsCategoryIcon.png')}
-                  style={styles.categoryButtonImage}
-                />
-              )}
-            />
-            <MainScreenHeaderCategoryButton
-              title="Electronics"
-              onPress={() => null}
-              IconComponent={() => (
-                <Image
-                  source={require('@/assets/icons/electronicsCategoryIcon.png')}
-                  style={styles.categoryButtonImage}
-                />
-              )}
-            />
-            <MainScreenHeaderCategoryButton
-              title={'Fashion\nand style'}
-              onPress={() => null}
-              IconComponent={() => (
-                <Image
-                  source={require('@/assets/icons/fashionAndStyleCategoryIcon.png')}
-                  style={styles.categoryButtonImage}
-                />
-              )}
-            />
-            <MainScreenHeaderCategoryButton
-              title={'House and\ngarden'}
-              onPress={() => null}
-              IconComponent={() => (
-                <Image
-                  source={require('@/assets/icons/houseAndGardenCategoryIcon.png')}
-                  style={styles.categoryButtonImage}
-                />
-              )}
-            />
-            <View style={{width: 15}} />
+            {CategoriesList.filter(
+              (category) => category.title !== 'All categories'
+            ).map((category, index) => (
+              <MainScreenHeaderCategoryButton
+                title={category.titleForHeader ?? category.title}
+                IconComponent={() =>
+                  typeof category.iconImage === 'number' ? (
+                    <Image
+                      source={category.iconImage}
+                      style={styles.categoryButtonImage}
+                    />
+                  ) : null
+                }
+                onPress={() =>
+                  navigation.navigate('CategoryScreen', { categoryId: index + 1 })
+                }
+              />
+            ))}
+            <View style={{ width: 15 }} />
           </ScrollView>
         </View>
       </View>
