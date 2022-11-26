@@ -1,5 +1,11 @@
 import React, { ReactNode } from 'react';
-import { EventSubscription, Keyboard, Text, View } from 'react-native';
+import {
+  DeviceEventEmitter,
+  EventSubscription,
+  Keyboard,
+  Text,
+  View,
+} from 'react-native';
 import { BottomSheetBackdrop, BottomSheetModal } from '@gorhom/bottom-sheet';
 import { SvgProps } from 'react-native-svg';
 
@@ -19,10 +25,13 @@ interface Props {
   value?: string | null;
   showValue?: boolean;
   hasPrefix?: boolean;
+  validateBeforeSubmit?: () => boolean;
+  onResetFilter?: () => void;
 }
 
 export class BaseSelect extends React.Component<Props, {}> {
   private keyboardDidHideSubscription: EventSubscription | undefined;
+  private resetFilterSubscription: EventSubscription | undefined;
   private modalRef: React.RefObject<BottomSheetModal>;
 
   constructor(props: Props) {
@@ -36,9 +45,17 @@ export class BaseSelect extends React.Component<Props, {}> {
       'keyboardDidHide',
       this.handleKeyboardHide.bind(this)
     );
+
+    this.resetFilterSubscription = DeviceEventEmitter.addListener(
+      'RESET_FILTERS',
+      () => {
+        this.props.onResetFilter?.();
+      }
+    );
   }
   componentWillUnmount() {
     this.keyboardDidHideSubscription?.remove();
+    this.resetFilterSubscription?.remove();
   }
 
   public close() {
@@ -64,6 +81,7 @@ export class BaseSelect extends React.Component<Props, {}> {
       value,
       showValue = true,
       hasPrefix = false,
+      validateBeforeSubmit,
     } = this.props;
 
     const valueWithPrefix = value ? [title, value].join(': ') : title;
@@ -90,7 +108,15 @@ export class BaseSelect extends React.Component<Props, {}> {
               <Text style={styles.modalHeaderTitle}>{title}</Text>
             </View>
             {children}
-            <Button onPress={this.close.bind(this)}>Apply</Button>
+            <Button
+              onPress={() => {
+                if (validateBeforeSubmit && !validateBeforeSubmit()) return;
+
+                this.close();
+              }}
+            >
+              Apply
+            </Button>
           </View>
         </BottomSheetModal>
         {small && SmallButtonIcon ? (

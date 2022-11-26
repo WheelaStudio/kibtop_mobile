@@ -57,6 +57,10 @@ export const LocationSelect: React.FC<Props> = ({
       small={small}
       SmallButtonIcon={SmallButtonIcon}
       value={selectedValue}
+      onResetFilter={() => {
+        setSelectedValue('');
+        setSearchValue('');
+      }}
     >
       <View style={styles.headerContainer}>
         <SearchInput

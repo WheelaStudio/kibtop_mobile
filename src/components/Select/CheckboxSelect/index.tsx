@@ -29,6 +29,9 @@ export const CheckboxSelect: React.FC<Props> = ({
       small={small}
       SmallButtonIcon={SmallButtonIcon}
       value={values.join(', ') || null}
+      onResetFilter={() => {
+        setValues([]);
+      }}
     >
       <FlatList
         data={options}

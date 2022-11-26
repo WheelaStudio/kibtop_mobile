@@ -10,10 +10,10 @@ interface Props {
 }
 
 export const ListSelect: React.FC<Props> = ({ title, options }) => {
-  console.log('LIST SELECT', title);
   const [currentValue, setCurrentValue] = useState<string>();
 
   const subscriptionRef = useRef<EventSubscription>();
+  const resetFilterSubscriptionRef = useRef<EventSubscription>();
   const eventNameRef = useRef<string>();
 
   const navigation = useNavigation();
@@ -34,14 +34,20 @@ export const ListSelect: React.FC<Props> = ({ title, options }) => {
       handleChange
     );
 
+    resetFilterSubscriptionRef.current = DeviceEventEmitter.addListener(
+      'RESET_FILTERS',
+      () => {
+        setCurrentValue(undefined);
+      }
+    );
+
     return () => {
-      console.log('remove subscriptionRef');
       subscriptionRef.current?.remove();
+      resetFilterSubscriptionRef.current?.remove();
     };
   }, [title, options]);
 
   function handleChange(index: number) {
-    console.log('TITLE', options, index);
     setCurrentValue(options[index]);
   }
 

@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
+import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 
 import { SearchInput } from '@/components/SearchInput';
 import { BaseSelect } from '@/components/Select';
 
 import styles from './styles';
-import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 
 interface Props {
   title: string;
@@ -44,12 +44,26 @@ export const RangeSelect: React.FC<Props> = ({ title, halfWidth = false }) => {
     return false;
   }
 
+  function validateBeforeSubmit() {
+    if (parseInt(from) > parseInt(to)) {
+      Alert.alert('"From" cannot be greater than "to"');
+      return false;
+    }
+
+    return true;
+  }
+
   return (
     <BaseSelect
       title={title}
       halfWidth={halfWidth}
       snapPoints={[220]}
       value={valueString}
+      validateBeforeSubmit={validateBeforeSubmit}
+      onResetFilter={() => {
+        setFrom('');
+        setTo('');
+      }}
     >
       <View style={styles.container}>
         <SearchInput

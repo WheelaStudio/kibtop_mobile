@@ -54,7 +54,7 @@ export const FiltersScreen: React.FC<{}> = ({}) => {
         hasPrefix
       />
       <Button onPress={() => null}>Show ads</Button>
-      <Button ghost onPress={() => null}>
+      <Button ghost onPress={() => DeviceEventEmitter.emit('RESET_FILTERS')}>
         Reset filter
       </Button>
     </SafeAreaView>

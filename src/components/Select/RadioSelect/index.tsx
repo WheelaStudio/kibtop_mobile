@@ -12,7 +12,7 @@ interface Props {
   small?: boolean;
   SmallButtonIcon?: React.FC<SvgProps>;
   showValue?: boolean;
-  hasPrefix?: boolean
+  hasPrefix?: boolean;
 }
 
 export const RadioSelect: React.FC<Props> = ({
@@ -35,6 +35,9 @@ export const RadioSelect: React.FC<Props> = ({
       value={value}
       showValue={showValue}
       hasPrefix={hasPrefix}
+      onResetFilter={() => {
+        setValue(options[0]);
+      }}
     >
       <FlatList
         data={options}

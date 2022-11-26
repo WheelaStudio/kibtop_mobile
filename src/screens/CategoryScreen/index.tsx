@@ -5,7 +5,7 @@ import { ProductItem } from '@/components/ProductItem';
 import { CategoriesList } from '@/constants/categories';
 import { useRoute } from '@react-navigation/native';
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { DeviceEventEmitter, ScrollView, View } from 'react-native';
 import { CategoryScreenHeader } from './components/Header';
 
 import styles from './styles';
@@ -23,7 +23,7 @@ export const CategoryScreen: React.FC<{}> = ({}) => {
           <FiltersList categoryIndex={categoryId} replaceListsWithRadio />
         </View>
         <Button onPress={() => null}>Show ads</Button>
-        <Button ghost onPress={() => null}>
+        <Button ghost onPress={() => DeviceEventEmitter.emit('RESET_FILTERS')}>
           Reset filters
         </Button>
         <View style={styles.adsContainer}>

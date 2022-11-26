@@ -46,6 +46,10 @@ export const SearchSelect: React.FC<Props> = ({ title }) => {
       ref={baseSelectRef}
       snapPoints={['70%']}
       value={selectedValue || null}
+      onResetFilter={() => {
+        setSelectedValue('');
+        setSearchValue('');
+      }}
     >
       <View style={styles.headerContainer}>
         <SearchInput
