@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FlatList } from 'react-native';
+import React, { useEffect } from 'react';
+import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { SvgProps } from 'react-native-svg';
 
 import { BaseSelect } from '../BaseSelect';
@@ -13,6 +13,8 @@ interface Props {
   SmallButtonIcon?: React.FC<SvgProps>;
   showValue?: boolean;
   hasPrefix?: boolean;
+  value: string | undefined;
+  onChange: (value: string) => void;
 }
 
 export const RadioSelect: React.FC<Props> = ({
@@ -23,8 +25,14 @@ export const RadioSelect: React.FC<Props> = ({
   SmallButtonIcon,
   showValue = true,
   hasPrefix,
+  value,
+  onChange,
 }) => {
-  const [value, setValue] = useState<string>(options[0]);
+  useEffect(() => {
+    if (value === undefined) {
+      onChange(options[0]);
+    }
+  }, [value]);
 
   return (
     <BaseSelect
@@ -36,16 +44,16 @@ export const RadioSelect: React.FC<Props> = ({
       showValue={showValue}
       hasPrefix={hasPrefix}
       onResetFilter={() => {
-        setValue(options[0]);
+        onChange(options[0]);
       }}
     >
-      <FlatList
+      <BottomSheetFlatList
         data={options}
         renderItem={({ item }) => (
           <RadioSelectListItem
             title={item}
             isSelected={item === value}
-            onPress={() => setValue(item)}
+            onPress={() => onChange(item)}
           />
         )}
         keyExtractor={(item) => item}

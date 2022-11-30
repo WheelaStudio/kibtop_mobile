@@ -1,5 +1,5 @@
 import { SearchInput } from '@/components/SearchInput';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -26,6 +26,8 @@ import { SvgProps } from 'react-native-svg';
 interface Props {}
 
 export const CategoryScreenHeader: React.FC<Props> = ({}) => {
+  const [location, setLocation] = useState<string>();
+
   const navigation = useNavigation();
   const {
     params: { categoryId },
@@ -77,6 +79,8 @@ export const CategoryScreenHeader: React.FC<Props> = ({}) => {
               SmallButtonIcon={SmallButtonArrowDown}
               hasPrefix
               showValue
+              value={location}
+              onChange={setLocation}
             />
           </View>
         </View>

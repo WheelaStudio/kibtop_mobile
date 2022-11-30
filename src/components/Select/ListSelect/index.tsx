@@ -7,11 +7,16 @@ import { SelectButton } from '@/components/Select';
 interface Props {
   options: string[];
   title: string;
+  value: string;
+  onChange: (value: string | undefined) => void;
 }
 
-export const ListSelect: React.FC<Props> = ({ title, options }) => {
-  const [currentValue, setCurrentValue] = useState<string>();
-
+export const ListSelect: React.FC<Props> = ({
+  title,
+  options,
+  value,
+  onChange,
+}) => {
   const subscriptionRef = useRef<EventSubscription>();
   const resetFilterSubscriptionRef = useRef<EventSubscription>();
   const eventNameRef = useRef<string>();
@@ -20,7 +25,7 @@ export const ListSelect: React.FC<Props> = ({ title, options }) => {
 
   useEffect(() => {
     subscriptionRef.current?.remove();
-    setCurrentValue(undefined);
+    onChange(undefined);
 
     eventNameRef.current =
       'LIST_SELECT_ON_CHANGE_EVENT_' +
@@ -37,7 +42,7 @@ export const ListSelect: React.FC<Props> = ({ title, options }) => {
     resetFilterSubscriptionRef.current = DeviceEventEmitter.addListener(
       'RESET_FILTERS',
       () => {
-        setCurrentValue(undefined);
+        onChange(undefined);
       }
     );
 
@@ -48,12 +53,12 @@ export const ListSelect: React.FC<Props> = ({ title, options }) => {
   }, [title, options]);
 
   function handleChange(index: number) {
-    setCurrentValue(options[index]);
+    onChange(options[index]);
   }
 
   return (
     <SelectButton
-      title={currentValue ?? title}
+      title={value ?? title}
       onPress={() =>
         navigation.navigate('ListSelectListScreen', {
           title,

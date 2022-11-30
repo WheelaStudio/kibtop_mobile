@@ -16,6 +16,11 @@ export interface IFilter {
   type: FiltersTypesEnum;
   selectType?: SelectTypesEnum;
   options?: string[];
+  showIf?: {
+    filterName: string;
+    in: string[];
+    default?: boolean;
+  };
 }
 
 export enum SelectTypesEnum {
@@ -58,13 +63,27 @@ export const CategoriesList: ICategory[] = [
       {
         title: '',
         type: FiltersTypesEnum.SEGMENTED,
-        options: ['All', 'Old', 'New'],
+        options: ['All', 'Resale', 'New'],
       },
       {
         title: 'Rooms',
         type: FiltersTypesEnum.SELECT_HALF_WITH,
         selectType: SelectTypesEnum.CHECKBOX,
         options: ['Studio', '1+1', '2+1', '2+2', '3+1', '4+1 and more'],
+        showIf: {
+          filterName: 'Proprety types',
+          in: ['Apartments', 'House'],
+          default: true,
+        },
+      },
+      {
+        title: 'Space',
+        type: FiltersTypesEnum.SELECT_HALF_WITH,
+        selectType: SelectTypesEnum.RANGE,
+        showIf: {
+          filterName: 'Proprety types',
+          in: ['Land', 'Other'],
+        },
       },
       {
         title: 'Price',
@@ -205,29 +224,10 @@ export const CategoriesList: ICategory[] = [
         selectType: SelectTypesEnum.LIST,
         options: [
           'Phones and accessories',
+          'Appliances',
           'Computers / Tables / Games',
           'TV / Photo / Video / Audio',
           'Other technique',
-        ],
-      },
-    ],
-  },
-  {
-    title: 'House and garden',
-    titleForHeader: 'House\nand garden',
-    iconImage: require('@/assets/icons/houseAndGardenCategoryIcon.png'),
-    filters: [
-      {
-        title: 'Goods type',
-        type: FiltersTypesEnum.SELECT,
-        selectType: SelectTypesEnum.LIST,
-        options: [
-          'Furniture',
-          'Food / Drinks',
-          'Garden',
-          'Interior items',
-          'Construction / Renovation',
-          'Other household goods',
         ],
       },
     ],
@@ -248,6 +248,26 @@ export const CategoriesList: ICategory[] = [
           "Children's shoes",
           "Men's clothing",
           'Accessories',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'House and garden',
+    titleForHeader: 'House\nand garden',
+    iconImage: require('@/assets/icons/houseAndGardenCategoryIcon.png'),
+    filters: [
+      {
+        title: 'Goods type',
+        type: FiltersTypesEnum.SELECT,
+        selectType: SelectTypesEnum.LIST,
+        options: [
+          'Furniture',
+          'Food / Drinks',
+          'Garden',
+          'Interior items',
+          'Construction / Renovation',
+          'Other household goods',
         ],
       },
     ],
