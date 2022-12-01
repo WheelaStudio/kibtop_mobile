@@ -27,7 +27,7 @@ export const FiltersList: React.FC<Props> = ({
   return (
     <>
       {CategoriesList[categoryIndex].filters.map(
-        ({ type, options, title, selectType, showIf }) => {
+        ({ type, options, title, selectType, showIf, units }) => {
           if (showIf) {
             const value = values[showIf.filterName];
 
@@ -43,6 +43,7 @@ export const FiltersList: React.FC<Props> = ({
             title,
             onChange: (value: FilterValueType) => onValueChange(title, value),
             value: values[title],
+            units,
           };
 
           let ComponentToRender = null;

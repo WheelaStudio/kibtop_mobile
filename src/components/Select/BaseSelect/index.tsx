@@ -27,6 +27,7 @@ interface Props {
   hasPrefix?: boolean;
   validateBeforeSubmit?: () => boolean;
   onResetFilter?: () => void;
+  headerTitle?: string;
 }
 
 export class BaseSelect extends React.Component<Props, {}> {
@@ -82,6 +83,7 @@ export class BaseSelect extends React.Component<Props, {}> {
       showValue = true,
       hasPrefix = false,
       validateBeforeSubmit,
+      headerTitle
     } = this.props;
 
     const valueWithPrefix = value ? [title, value].join(': ') : title;
@@ -105,7 +107,7 @@ export class BaseSelect extends React.Component<Props, {}> {
         >
           <View style={{ flex: 1, paddingBottom: 35 }}>
             <View style={styles.modalHeaderContainer}>
-              <Text style={styles.modalHeaderTitle}>{title}</Text>
+              <Text style={styles.modalHeaderTitle}>{headerTitle ?? title}</Text>
             </View>
             {children}
             <Button

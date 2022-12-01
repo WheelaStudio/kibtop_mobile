@@ -16,6 +16,7 @@ export interface IFilter {
   type: FiltersTypesEnum;
   selectType?: SelectTypesEnum;
   options?: string[];
+  units?: string;
   showIf?: {
     filterName: string;
     in: string[];
@@ -84,11 +85,13 @@ export const CategoriesList: ICategory[] = [
           filterName: 'Proprety types',
           in: ['Land', 'Other'],
         },
+        units: 'm²',
       },
       {
         title: 'Price',
         type: FiltersTypesEnum.SELECT_HALF_WITH,
         selectType: SelectTypesEnum.RANGE,
+        units: '$',
       },
     ],
   },
@@ -112,6 +115,7 @@ export const CategoriesList: ICategory[] = [
         title: 'Millage',
         type: FiltersTypesEnum.SELECT,
         selectType: SelectTypesEnum.RANGE,
+        units: 'km',
       },
       {
         title: 'Year',
@@ -122,6 +126,7 @@ export const CategoriesList: ICategory[] = [
         title: 'Price',
         type: FiltersTypesEnum.SELECT_HALF_WITH,
         selectType: SelectTypesEnum.RANGE,
+        units: '$',
       },
     ],
   },
@@ -172,6 +177,7 @@ export const CategoriesList: ICategory[] = [
         title: 'Salary',
         type: FiltersTypesEnum.SELECT_HALF_WITH,
         selectType: SelectTypesEnum.RANGE,
+        units: '$',
       },
     ],
   },

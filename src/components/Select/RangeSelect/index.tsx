@@ -10,9 +10,14 @@ import styles from './styles';
 interface Props {
   title: string;
   halfWidth?: boolean;
+  units?: string;
 }
 
-export const RangeSelect: React.FC<Props> = ({ title, halfWidth = false }) => {
+export const RangeSelect: React.FC<Props> = ({
+  title,
+  halfWidth = false,
+  units,
+}) => {
   const [from, setFrom] = useState<string>('');
   const [to, setTo] = useState<string>('');
 
@@ -55,7 +60,8 @@ export const RangeSelect: React.FC<Props> = ({ title, halfWidth = false }) => {
 
   return (
     <BaseSelect
-      title={title}
+      title={[title, units].filter(Boolean).join(', ')}
+      headerTitle={title}
       halfWidth={halfWidth}
       snapPoints={[220]}
       value={valueString}
