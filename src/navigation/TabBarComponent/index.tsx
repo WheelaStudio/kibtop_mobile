@@ -82,10 +82,15 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
           style={styles.corner}
         />
       </View>
-      <Image
-        source={require('@/assets/icons/tabBarMiddleSection.png')}
-        style={styles.middleSection}
-      />
+      <View style={styles.middleSection} pointerEvents="none">
+        <Image
+          source={require('@/assets/icons/tabBarMiddleSection.png')}
+          style={{
+            width: 90,
+            height: 85,
+          }}
+        />
+      </View>
       <TouchableOpacity style={styles.middleSectionButton}>
         <Image
           style={{ width: 90, height: 90 }}

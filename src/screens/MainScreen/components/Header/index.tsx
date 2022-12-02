@@ -18,6 +18,8 @@ import { SearchInput } from '@/components/SearchInput';
 
 import styles from './styles';
 import { CategoriesList } from '@/constants/categories';
+import LinearGradient from 'react-native-linear-gradient';
+import { colors } from '@/constants/colors';
 
 interface Props {}
 
@@ -68,12 +70,21 @@ export const MainScreenHeader: React.FC<Props> = ({}) => {
                   ) : null
                 }
                 onPress={() =>
-                  navigation.navigate('CategoryScreen', { categoryId: index + 1 })
+                  navigation.navigate('CategoryScreen', {
+                    categoryId: index + 1,
+                  })
                 }
               />
             ))}
             <View style={{ width: 15 }} />
           </ScrollView>
+          <LinearGradient
+            colors={['#FFFFFF00', colors.white]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.gradient}
+            pointerEvents="none"
+          />
         </View>
       </View>
     </>

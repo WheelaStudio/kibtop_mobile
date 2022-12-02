@@ -51,4 +51,11 @@ export default StyleSheet.create({
     width: 45,
     height: 45,
   },
+  gradient: {
+    height: 75,
+    width: 75,
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+  },
 });
