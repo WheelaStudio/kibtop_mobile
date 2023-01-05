@@ -1,22 +1,22 @@
-import React, { useMemo, useRef, useState } from 'react';
-import { FlatList, Platform, View } from 'react-native';
-import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
+import React, {useMemo, useRef, useState} from 'react'
+import {FlatList, Platform, View} from 'react-native'
+import {BottomSheetTextInput} from '@gorhom/bottom-sheet'
 
-import { SearchInput } from '@/components/SearchInput';
-import { BaseSelect } from '@/components/Select';
-import { Button } from '@/components/Button';
-import { LocationSelectListItem } from './components/ListItem';
+import {CustomInput} from '@/components/CustomInput'
+import {BaseSelect} from '@/components/Select'
+import {Button} from '@/components/Button'
+import {LocationSelectListItem} from './components/ListItem'
 
-import LocationInputIcon from '@/assets/icons/locationInputIcon.svg';
+import LocationInputIcon from '@/assets/icons/locationInputIcon.svg'
 
-import styles from './styles';
-import { SvgProps } from 'react-native-svg';
+import styles from './styles'
+import {SvgProps} from 'react-native-svg'
 
 interface Props {
-  title: string;
-  small?: boolean;
-  SmallButtonIcon?: React.FC<SvgProps>;
-  showValue?: boolean;
+  title: string
+  small?: boolean
+  SmallButtonIcon?: React.FC<SvgProps>
+  showValue?: boolean
 }
 
 export const LocationSelect: React.FC<Props> = ({
@@ -25,28 +25,30 @@ export const LocationSelect: React.FC<Props> = ({
   SmallButtonIcon,
   showValue = false,
 }) => {
-  const baseSelectRef = useRef<BaseSelect>(null);
+  const baseSelectRef = useRef<BaseSelect>(null)
 
-  const [searchValue, setSearchValue] = useState<string>('');
-  const [selectedValue, setSelectedValue] = useState<string>('');
+  const [searchValue, setSearchValue] = useState<string>('')
+  const [selectedValue, setSelectedValue] = useState<string>('')
 
-  const data = ['Limassol', 'Nicosia', 'Pathos'];
+  const data = ['Limassol', 'Nicosia', 'Pathos']
 
   const filteredData = useMemo(() => {
-    const result = data.filter((x) => x.includes(searchValue));
+    const result = data.filter(x => x.includes(searchValue))
 
-    if (result.length === 0) return data;
+    if (result.length === 0) {
+      return data
+    }
 
-    return result;
-  }, [searchValue, data]);
+    return result
+  }, [searchValue, data])
 
   function handleClose() {
-    baseSelectRef.current?.close();
+    baseSelectRef.current?.close()
   }
 
   function handleListItemPress(value: string) {
-    setSelectedValue(value);
-    handleClose();
+    setSelectedValue(value)
+    handleClose()
   }
 
   return (
@@ -58,12 +60,11 @@ export const LocationSelect: React.FC<Props> = ({
       SmallButtonIcon={SmallButtonIcon}
       value={selectedValue}
       onResetFilter={() => {
-        setSelectedValue('');
-        setSearchValue('');
-      }}
-    >
+        setSelectedValue('')
+        setSearchValue('')
+      }}>
       <View style={styles.headerContainer}>
-        <SearchInput
+        <CustomInput
           placeholder="City or region"
           Icon={LocationInputIcon}
           CustomTextInputComponent={
@@ -72,13 +73,16 @@ export const LocationSelect: React.FC<Props> = ({
           value={searchValue}
           onChangeText={setSearchValue}
         />
-        <Button ghost fullWidth={false} onPress={handleClose}>
-          Cancel
-        </Button>
+        <Button
+          ghost
+          fullWidth={false}
+          onPress={handleClose}
+          title={'Cancel'}
+        />
       </View>
       <FlatList
         data={filteredData}
-        renderItem={({ item, index }) => (
+        renderItem={({item, index}) => (
           <LocationSelectListItem
             title={item}
             noBorder={data.length - 1 === index}
@@ -87,5 +91,5 @@ export const LocationSelect: React.FC<Props> = ({
         )}
       />
     </BaseSelect>
-  );
-};
+  )
+}

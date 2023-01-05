@@ -1,11 +1,11 @@
-import React from 'react';
-import { SvgProps } from 'react-native-svg';
+import React from 'react'
+import {SvgProps} from 'react-native-svg'
 
 interface Props {
-  size: number;
-  focused: boolean;
-  FocusedIcon: React.FC<SvgProps>;
-  DefaultIcon: React.FC<SvgProps>;
+  size: number
+  focused: boolean
+  FocusedIcon: React.FC<SvgProps>
+  DefaultIcon: React.FC<SvgProps>
 }
 
 export const TabBarIcon: React.FC<Props> = ({
@@ -14,7 +14,9 @@ export const TabBarIcon: React.FC<Props> = ({
   FocusedIcon,
   DefaultIcon,
 }) => {
-  if (focused) return <FocusedIcon width={size} />;
+  if (focused) {
+    return <FocusedIcon width={size} />
+  }
 
-  return <DefaultIcon width={size} />;
-};
+  return <DefaultIcon width={size} />
+}

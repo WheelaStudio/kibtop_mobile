@@ -1,10 +1,10 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React from 'react'
+import {Text, View} from 'react-native'
 
-import { ProductItem } from '@/components/ProductItem';
-import { EstateItem } from '@/components/EstateItem';
+import {ProductItem} from '@/components/ProductItem'
+import {EstateItem} from '@/components/EstateItem'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {}
 
@@ -23,5 +23,5 @@ export const MainScreenRecommendationBlock: React.FC<Props> = ({}) => {
         <EstateItem isRentItem />
       </View>
     </View>
-  );
-};
+  )
+}

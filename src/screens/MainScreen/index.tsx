@@ -1,11 +1,11 @@
-import React from 'react';
-import { ScrollView, View } from 'react-native';
+import React from 'react'
+import {ScrollView, View} from 'react-native'
 
-import { MainScreenHeader } from './components/Header';
-import { MainScreenPromoBlock } from './components/PromoBlock';
-import { MainScreenRecommendationBlock } from './components/RecommendationBlock';
+import {MainScreenHeader} from './components/Header'
+import {MainScreenPromoBlock} from './components/PromoBlock'
+import {MainScreenRecommendationBlock} from './components/RecommendationBlock'
 
-import styles from './styles';
+import styles from './styles'
 
 export const MainScreen: React.FC<{}> = () => {
   return (
@@ -13,11 +13,10 @@ export const MainScreen: React.FC<{}> = () => {
       <MainScreenHeader />
       <ScrollView
         style={styles.container}
-        contentContainerStyle={styles.scrollViewContainer}
-      >
+        contentContainerStyle={styles.scrollViewContainer}>
         <MainScreenPromoBlock />
         <MainScreenRecommendationBlock />
       </ScrollView>
     </View>
-  );
-};
+  )
+}

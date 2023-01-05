@@ -1,42 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react'
 import {
-  SafeAreaView,
-  View,
   DeviceEventEmitter,
   EventSubscription,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+  SafeAreaView,
+  View,
+} from 'react-native'
+import {useNavigation} from '@react-navigation/native'
 
-import { Header } from '@/components/Header';
-import { Button } from '@/components/Button';
-import { Divider } from '@/components/Divider';
-import { FiltersList, IFilterValues } from '@/components/FiltersList';
-import { SelectButton, RadioSelect, LocationSelect } from '@/components/Select';
+import {Header} from '@/components/Header'
+import {Button} from '@/components/Button'
+import {Divider} from '@/components/Divider'
+import {FiltersList, IFilterValues} from '@/components/FiltersList'
+import {LocationSelect, RadioSelect, SelectButton} from '@/components/Select'
 
-import { CategoriesList } from '@/constants/categories';
+import {CategoriesList} from '@/constants/categories'
 
-import styles from './styles';
+import styles from './styles'
 
 export const FiltersScreen: React.FC<{}> = ({}) => {
-  const [currentCategoryIndex, setCurrentCategoryIndex] = useState<number>(0);
-  const [filterValues, setFilterValues] = useState<IFilterValues>({});
-  const [location, setLocation] = useState<string>();
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState<number>(0)
+  const [filterValues, setFilterValues] = useState<IFilterValues>({})
+  const [location, setLocation] = useState<string>()
 
-  const subscriptionRef = useRef<EventSubscription>();
+  const subscriptionRef = useRef<EventSubscription>()
 
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   useEffect(() => {
     subscriptionRef.current = DeviceEventEmitter.addListener(
       'CategoryChanged',
-      handleCategoryChanged
-    );
+      handleCategoryChanged,
+    )
 
-    return () => subscriptionRef.current?.remove();
-  }, []);
+    return () => subscriptionRef.current?.remove()
+  }, [])
 
   function handleCategoryChanged(value: number) {
-    setCurrentCategoryIndex(value);
+    setCurrentCategoryIndex(value)
   }
 
   return (
@@ -51,7 +51,7 @@ export const FiltersScreen: React.FC<{}> = ({}) => {
           categoryIndex={currentCategoryIndex}
           values={filterValues}
           onValueChange={(key, newValue) =>
-            setFilterValues((state) => ({ ...state, [key]: newValue }))
+            setFilterValues(state => ({...state, [key]: newValue}))
           }
         />
       </View>
@@ -64,10 +64,12 @@ export const FiltersScreen: React.FC<{}> = ({}) => {
         value={location}
         onChange={setLocation}
       />
-      <Button onPress={() => null}>Show ads</Button>
-      <Button ghost onPress={() => DeviceEventEmitter.emit('RESET_FILTERS')}>
-        Reset filter
-      </Button>
+      <Button onPress={() => null} title={'Show ads'} />
+      <Button
+        ghost
+        onPress={() => DeviceEventEmitter.emit('RESET_FILTERS')}
+        title={'Reset filter'}
+      />
     </SafeAreaView>
-  );
-};
+  )
+}

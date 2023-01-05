@@ -9,4 +9,5 @@ export const colors = {
   transparent: '#00000000',
   black: '#000000',
   blue: '#7AB1FF',
-};
+  red: '#FF5A5A',
+}

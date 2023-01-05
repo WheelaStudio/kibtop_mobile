@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
   divider: {
@@ -8,4 +8,4 @@ export default StyleSheet.create({
     marginLeft: 15,
     marginBottom: 11,
   },
-});
+})

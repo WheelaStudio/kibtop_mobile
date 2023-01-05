@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import { appFont } from '@/constants/fonts';
+import {appFont} from '@/constants/fonts'
 
 export default StyleSheet.create({
   container: {
@@ -15,4 +15,4 @@ export default StyleSheet.create({
     fontSize: 12,
     marginLeft: 5,
   },
-});
+})

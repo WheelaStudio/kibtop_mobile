@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import React, {useState} from 'react'
+import {Image, Text, TouchableOpacity, View} from 'react-native'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  hasPriceInterval?: boolean;
+  hasPriceInterval?: boolean
 }
 
-export const ProductItem: React.FC<Props> = ({ hasPriceInterval }) => {
-  const [liked, setLiked] = useState<boolean>(false);
+export const ProductItem: React.FC<Props> = ({hasPriceInterval}) => {
+  const [liked, setLiked] = useState<boolean>(false)
 
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.imageBlock}>
         <TouchableOpacity
           style={styles.likeButtonContainer}
-          onPress={() => setLiked((state) => !state)}
-        >
+          onPress={() => setLiked(state => !state)}>
           <Image
             style={styles.likeIcon}
             source={
@@ -39,5 +38,5 @@ export const ProductItem: React.FC<Props> = ({ hasPriceInterval }) => {
       <Text style={styles.subtitle}>seller's address</Text>
       <Text style={styles.subtitle}>announcement date</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}

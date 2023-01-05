@@ -1,8 +1,8 @@
-import { colors } from '@/constants/colors';
-import { appFont } from '@/constants/fonts';
-import { Dimensions, StyleSheet } from 'react-native';
+import {colors} from '@/constants/colors'
+import {appFont} from '@/constants/fonts'
+import {Dimensions, StyleSheet} from 'react-native'
 
-const { width } = Dimensions.get('screen');
+const {width} = Dimensions.get('screen')
 
 export default StyleSheet.create({
   container: {
@@ -28,4 +28,4 @@ export default StyleSheet.create({
   noBorder: {
     borderBottomWidth: 0,
   },
-});
+})

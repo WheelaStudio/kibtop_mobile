@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, {useState} from 'react'
+import {View, ViewStyle} from 'react-native'
 
-import { BaseSegmentedControl } from './components/BaseSegmentedControl';
+import {BaseSegmentedControl} from './components/BaseSegmentedControl'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  options: string[];
+  options: string[]
+  containerStyles?: ViewStyle
 }
 
-export const SegmentedControl: React.FC<Props> = ({ options }) => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+export const SegmentedControl: React.FC<Props> = ({
+  options,
+  containerStyles,
+}) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyles]}>
       <BaseSegmentedControl
         segments={options}
         currentIndex={currentIndex}
@@ -24,5 +28,5 @@ export const SegmentedControl: React.FC<Props> = ({ options }) => {
         inactiveTextStyle={styles.title}
       />
     </View>
-  );
-};
+  )
+}

@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 import {
   Image,
   ImageBackground,
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+} from 'react-native'
+import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
 
-import { TabBarComponentTabButton } from './components/TabButton';
+import {TabBarComponentTabButton} from './components/TabButton'
 
-import styles from './styles';
+import styles from './styles'
 
 export const TabBarComponent: React.FC<BottomTabBarProps> = ({
   state,
@@ -18,21 +18,21 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
   navigation,
 }) => {
   const buttons = state.routes.slice(0, 4).map((route, index) => {
-    const { options } = descriptors[route.key];
+    const {options} = descriptors[route.key]
 
-    const title = options.title || 'Not defined';
-    const Icon = options.tabBarIcon;
-    const isFocused = state.index === index;
+    const title = options.title || 'Not defined'
+    const Icon = options.tabBarIcon
+    const isFocused = state.index === index
 
     function onPress() {
       const event = navigation.emit({
         type: 'tabPress',
         target: route.key,
         canPreventDefault: true,
-      });
+      })
 
       if (!isFocused && !event.defaultPrevented) {
-        navigation.navigate(route.name);
+        navigation.navigate(route.name)
       }
     }
 
@@ -40,7 +40,7 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
       navigation.emit({
         type: 'tabLongPress',
         target: route.key,
-      });
+      })
     }
 
     return (
@@ -49,14 +49,14 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
         isFocused={isFocused}
         onLongPress={onLongPress}
         onPress={onPress}
-        icon={Icon?.({ focused: isFocused, size: 30, color: '' })}
+        icon={Icon?.({focused: isFocused, size: 30, color: ''})}
       />
-    );
-  });
+    )
+  })
 
   return (
     <View style={styles.wrapper}>
-      <View style={{ flexDirection: 'row', height: 90 }}>
+      <View style={{flexDirection: 'row', height: 90}}>
         <Image
           source={require('@/assets/icons/tabBarLeftCorner.png')}
           style={styles.corner}
@@ -64,17 +64,15 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
         <ImageBackground
           source={require('@/assets/icons/tabBarCover.png')}
           style={[styles.sideContainer, styles.leftSideContainer]}
-          resizeMode="stretch"
-        >
+          resizeMode="stretch">
           {buttons.slice(0, 2)}
         </ImageBackground>
       </View>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{flexDirection: 'row'}}>
         <ImageBackground
           source={require('@/assets/icons/tabBarCoverRight.png')}
           style={[styles.sideContainer, styles.rightSideContainer]}
-          resizeMode="stretch"
-        >
+          resizeMode="stretch">
           {buttons.slice(2, 4)}
         </ImageBackground>
         <Image
@@ -93,12 +91,12 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
       </View>
       <TouchableOpacity style={styles.middleSectionButton}>
         <Image
-          style={{ width: 90, height: 90 }}
+          style={{width: 90, height: 90}}
           source={require('@/assets/icons/tabBarMiddleSectionButton.png')}
         />
       </TouchableOpacity>
       <Text style={styles.addAdvertText}>Add advert</Text>
       <View style={styles.bottomCover} />
     </View>
-  );
-};
+  )
+}

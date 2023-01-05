@@ -1,10 +1,10 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native'
 
-import { colors } from '@/constants/colors';
-import { appFont } from '@/constants/fonts';
-import { isTablet } from '@/utils/isTablet';
+import {colors} from '@/constants/colors'
+import {appFont} from '@/constants/fonts'
+import {isTablet} from '@/utils/isTablet'
 
-const { width } = Dimensions.get('screen');
+const {width} = Dimensions.get('screen')
 
 export default StyleSheet.create({
   wrapper: {
@@ -77,4 +77,4 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 0,
   },
-});
+})

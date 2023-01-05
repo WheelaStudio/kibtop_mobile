@@ -1,16 +1,16 @@
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React from 'react'
+import {Text, TouchableOpacity} from 'react-native'
 
-import Icon from '@/assets/icons/tabBarHomeIconOutlined.svg';
+import Icon from '@/assets/icons/tabBarHomeIconOutlined.svg'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  title: string;
-  isFocused: boolean;
-  onPress: () => void;
-  onLongPress: () => void;
-  icon: any;
+  title: string
+  isFocused: boolean
+  onPress: () => void
+  onLongPress: () => void
+  icon: any
 }
 
 export const TabBarComponentTabButton: React.FC<Props> = ({
@@ -24,12 +24,11 @@ export const TabBarComponentTabButton: React.FC<Props> = ({
     <TouchableOpacity
       style={styles.container}
       onPress={onPress}
-      onLongPress={onLongPress}
-    >
+      onLongPress={onLongPress}>
       {icon || <Icon />}
       <Text style={[styles.title, isFocused && styles.titleFocused]}>
         {title}
       </Text>
     </TouchableOpacity>
-  );
-};
+  )
+}

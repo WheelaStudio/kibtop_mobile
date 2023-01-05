@@ -1,27 +1,27 @@
-import React from 'react';
-import { ImageRequireSource } from 'react-native';
-import { SvgProps } from 'react-native-svg';
+import React from 'react'
+import {ImageRequireSource} from 'react-native'
+import {SvgProps} from 'react-native-svg'
 
-import AllCategoriesIcon from '@/assets/icons/allCategoriesIcon.svg';
+import AllCategoriesIcon from '@/assets/icons/allCategoriesIcon.svg'
 
 export interface ICategory {
-  title: string;
-  iconImage: ImageRequireSource | React.FC<SvgProps>;
-  filters: IFilter[];
-  titleForHeader?: string;
+  title: string
+  iconImage: ImageRequireSource | React.FC<SvgProps>
+  filters: IFilter[]
+  titleForHeader?: string
 }
 
 export interface IFilter {
-  title: string;
-  type: FiltersTypesEnum;
-  selectType?: SelectTypesEnum;
-  options?: string[];
-  units?: string;
+  title: string
+  type: FiltersTypesEnum
+  selectType?: SelectTypesEnum
+  options?: string[]
+  units?: string
   showIf?: {
-    filterName: string;
-    in: string[];
-    default?: boolean;
-  };
+    filterName: string
+    in: string[]
+    default?: boolean
+  }
 }
 
 export enum SelectTypesEnum {
@@ -278,4 +278,4 @@ export const CategoriesList: ICategory[] = [
       },
     ],
   },
-];
+]

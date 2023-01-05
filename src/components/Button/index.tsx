@@ -1,20 +1,22 @@
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React from 'react'
+import {Text, TouchableOpacity, ViewStyle} from 'react-native'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  children: string;
-  ghost?: boolean;
-  onPress: () => void;
-  fullWidth?: boolean;
+  title: string
+  ghost?: boolean
+  onPress?: () => void
+  fullWidth?: boolean
+  containerStyles?: ViewStyle
 }
 
 export const Button: React.FC<Props> = ({
-  children,
+  title,
   ghost,
   onPress,
   fullWidth = true,
+  containerStyles,
 }) => {
   return (
     <TouchableOpacity
@@ -22,10 +24,10 @@ export const Button: React.FC<Props> = ({
         styles.container,
         ghost && styles.ghostContainer,
         fullWidth && styles.fullWidth,
+        containerStyles,
       ]}
-      onPress={() => onPress()}
-    >
-      <Text style={[styles.title, ghost && styles.ghostTitle]}>{children}</Text>
+      onPress={onPress}>
+      <Text style={[styles.title, ghost && styles.ghostTitle]}>{title}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}

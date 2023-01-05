@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import React, {useState} from 'react'
+import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native'
 
-import { EstateItemPhotoListItem } from './components/PhotoListItem';
+import {EstateItemPhotoListItem} from './components/PhotoListItem'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  isRentItem?: boolean;
+  isRentItem?: boolean
 }
 
-export const EstateItem: React.FC<Props> = ({ isRentItem }) => {
-  const [liked, setLiked] = useState<boolean>(false);
+export const EstateItem: React.FC<Props> = ({isRentItem}) => {
+  const [liked, setLiked] = useState<boolean>(false)
 
   return (
     <View style={styles.container}>
@@ -19,7 +19,7 @@ export const EstateItem: React.FC<Props> = ({ isRentItem }) => {
         renderItem={() => <EstateItemPhotoListItem />}
         contentContainerStyle={styles.flatListContainer}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(i) => String(i)}
+        keyExtractor={i => String(i)}
         horizontal
       />
       <View style={styles.header}>
@@ -38,7 +38,7 @@ export const EstateItem: React.FC<Props> = ({ isRentItem }) => {
           <Text style={styles.subtitle}>seller's address</Text>
           <Text style={styles.subtitle}>announcement date</Text>
         </View>
-        <TouchableOpacity onPress={() => setLiked((state) => !state)}>
+        <TouchableOpacity onPress={() => setLiked(state => !state)}>
           <Image
             style={styles.likeIcon}
             source={
@@ -50,5 +50,5 @@ export const EstateItem: React.FC<Props> = ({ isRentItem }) => {
         </TouchableOpacity>
       </View>
     </View>
-  );
-};
+  )
+}

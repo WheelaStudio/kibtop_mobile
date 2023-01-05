@@ -1,35 +1,35 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
-import { MainScreen } from '@/screens/MainScreen';
+import {MainScreen} from '@/screens/MainScreen'
 
-import { TabBarComponent } from './TabBarComponent';
-import { TabBarIcon } from './TabBarIcon';
-import { HomeStackNavigator } from './HomeStackNavigator';
+import {TabBarComponent} from './TabBarComponent'
+import {TabBarIcon} from './TabBarIcon'
+import {HomeStackNavigator} from './ScreenStacks/HomeStackNavigator'
 
-import HomeIconFilled from '@/assets/icons/tabBarHomeIconFilled.svg';
-import HomeIconOutlined from '@/assets/icons/tabBarHomeIconOutlined.svg';
-import HeartIconFilled from '@/assets/icons/tabBarHeartIconFilled.svg';
-import HeartIconOutlined from '@/assets/icons/tabBarHeartIconOutlined.svg';
-import ChatIconFilled from '@/assets/icons/tabBarChatIconFilled.svg';
-import ChatIconOutlined from '@/assets/icons/tabBarChatIconOutlined.svg';
-import ProfileIconFilled from '@/assets/icons/tabBarProfileIconFilled.svg';
-import ProfileIconOutlined from '@/assets/icons/tabBarProfileIconOutlined.svg';
+import HomeIconFilled from '@/assets/icons/tabBarHomeIconFilled.svg'
+import HomeIconOutlined from '@/assets/icons/tabBarHomeIconOutlined.svg'
+import HeartIconFilled from '@/assets/icons/tabBarHeartIconFilled.svg'
+import HeartIconOutlined from '@/assets/icons/tabBarHeartIconOutlined.svg'
+import ChatIconFilled from '@/assets/icons/tabBarChatIconFilled.svg'
+import ChatIconOutlined from '@/assets/icons/tabBarChatIconOutlined.svg'
+import ProfileIconFilled from '@/assets/icons/tabBarProfileIconFilled.svg'
+import ProfileIconOutlined from '@/assets/icons/tabBarProfileIconOutlined.svg'
+import {AuthStackNavigator} from '@/navigation/ScreenStacks/AuthStackNavigator'
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 export const TabNavigator = () => {
   return (
     <Tab.Navigator
       tabBar={TabBarComponent}
-      screenOptions={{ headerShown: false }}
-    >
+      screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="HomeTab"
         component={HomeStackNavigator}
         options={{
           title: 'Home',
-          tabBarIcon: (props) => (
+          tabBarIcon: props => (
             <TabBarIcon
               {...props}
               FocusedIcon={HomeIconFilled}
@@ -43,7 +43,7 @@ export const TabNavigator = () => {
         component={MainScreen}
         options={{
           title: 'Favorites',
-          tabBarIcon: (props) => (
+          tabBarIcon: props => (
             <TabBarIcon
               {...props}
               FocusedIcon={HeartIconFilled}
@@ -57,7 +57,7 @@ export const TabNavigator = () => {
         component={MainScreen}
         options={{
           title: 'Chats',
-          tabBarIcon: (props) => (
+          tabBarIcon: props => (
             <TabBarIcon
               {...props}
               FocusedIcon={ChatIconFilled}
@@ -68,10 +68,10 @@ export const TabNavigator = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={MainScreen}
+        component={AuthStackNavigator}
         options={{
           title: 'Profile',
-          tabBarIcon: (props) => (
+          tabBarIcon: props => (
             <TabBarIcon
               {...props}
               FocusedIcon={ProfileIconFilled}
@@ -81,5 +81,5 @@ export const TabNavigator = () => {
         }}
       />
     </Tab.Navigator>
-  );
-};
+  )
+}

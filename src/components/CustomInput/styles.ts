@@ -1,9 +1,9 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native'
 
-import { colors } from '@/constants/colors';
-import { appFont } from '@/constants/fonts';
+import {colors} from '@/constants/colors'
+import {appFont} from '@/constants/fonts'
 
-const { width } = Dimensions.get('screen');
+const {width} = Dimensions.get('screen')
 
 export default StyleSheet.create({
   container: {
@@ -33,4 +33,13 @@ export default StyleSheet.create({
     marginHorizontal: 8,
     borderWidth: 0,
   },
-});
+  errorMessage: {
+    color: colors.red,
+    fontWeight: '400',
+    marginTop: 10,
+    marginLeft: 5,
+  },
+  hasErrorContainer: {
+    borderColor: colors.red,
+  },
+})

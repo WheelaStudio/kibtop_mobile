@@ -1,40 +1,30 @@
-import { SearchInput } from '@/components/SearchInput';
-import React, { useState } from 'react';
-import {
-  Image,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {CustomInput} from '@/components/CustomInput'
+import React, {useState} from 'react'
+import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native'
 
-import {
-  CheckboxSelect,
-  LocationSelect,
-  RadioSelect,
-} from '@/components/Select';
+import {LocationSelect, RadioSelect} from '@/components/Select'
 
-import HeaderArrowLeftIcon from '@/assets/icons/headerArrowLeftIcon.svg';
-import LocationInputIcon from '@/assets/icons/locationInputIcon.svg';
-import SmallButtonArrowDown from '@/assets/icons/smallButtonArrowDownIcon.svg';
+import HeaderArrowLeftIcon from '@/assets/icons/headerArrowLeftIcon.svg'
+import LocationInputIcon from '@/assets/icons/locationInputIcon.svg'
+import SmallButtonArrowDown from '@/assets/icons/smallButtonArrowDownIcon.svg'
 
-import styles from './styles';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { CategoriesList } from '@/constants/categories';
-import { SvgProps } from 'react-native-svg';
+import styles from './styles'
+import {useNavigation, useRoute} from '@react-navigation/native'
+import {CategoriesList} from '@/constants/categories'
+import {SvgProps} from 'react-native-svg'
 
 interface Props {}
 
 export const CategoryScreenHeader: React.FC<Props> = ({}) => {
-  const [location, setLocation] = useState<string>();
+  const [location, setLocation] = useState<string>()
 
-  const navigation = useNavigation();
+  const navigation = useNavigation()
   const {
-    params: { categoryId },
-  } = useRoute();
+    params: {categoryId},
+  } = useRoute()
 
   const IconComponent = CategoriesList[categoryId]
-    .iconImage as React.FC<SvgProps>;
+    .iconImage as React.FC<SvgProps>
 
   return (
     <>
@@ -43,11 +33,10 @@ export const CategoryScreenHeader: React.FC<Props> = ({}) => {
         <View style={styles.searchLineContainer}>
           <TouchableOpacity
             style={styles.backButtonContainer}
-            onPress={() => navigation.goBack()}
-          >
+            onPress={() => navigation.goBack()}>
             <HeaderArrowLeftIcon height={30} width={30} />
           </TouchableOpacity>
-          <SearchInput placeholder="Search product" />
+          <CustomInput placeholder="Search product" />
         </View>
         <View style={styles.footerContainer}>
           <View style={styles.titleContainer}>
@@ -57,11 +46,7 @@ export const CategoryScreenHeader: React.FC<Props> = ({}) => {
                 style={styles.categoryIcon}
               />
             ) : (
-              <IconComponent
-                width={39}
-                height={39}
-                style={{ marginRight: 5 }}
-              />
+              <IconComponent width={39} height={39} style={{marginRight: 5}} />
             )}
             <Text style={styles.title}>{CategoriesList[categoryId].title}</Text>
           </View>
@@ -86,5 +71,5 @@ export const CategoryScreenHeader: React.FC<Props> = ({}) => {
         </View>
       </View>
     </>
-  );
-};
+  )
+}

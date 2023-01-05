@@ -1,5 +1,5 @@
-import { colors } from '@/constants/colors';
-import { StyleSheet } from 'react-native';
+import {colors} from '@/constants/colors'
+import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
   container: {
@@ -11,4 +11,4 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-});
+})

@@ -1,6 +1,6 @@
-import { Platform } from 'react-native';
+import {Platform} from 'react-native'
 
-import { colors } from '@/constants/colors';
+import {colors} from '@/constants/colors'
 
 /**
  * Replaces specified shadow color with black on Android in order
@@ -11,7 +11,9 @@ import { colors } from '@/constants/colors';
  * @returns string shadow color for StyleSheet
  */
 export function shadowColor(iosValue: string): string {
-  if (Platform.OS === 'ios') return iosValue;
+  if (Platform.OS === 'ios') {
+    return iosValue
+  }
 
-  return colors.black;
+  return colors.black
 }

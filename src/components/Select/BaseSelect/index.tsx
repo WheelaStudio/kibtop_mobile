@@ -1,74 +1,74 @@
-import React, { ReactNode } from 'react';
+import React, {ReactNode} from 'react'
 import {
   DeviceEventEmitter,
   EventSubscription,
   Keyboard,
   Text,
   View,
-} from 'react-native';
-import { BottomSheetBackdrop, BottomSheetModal } from '@gorhom/bottom-sheet';
-import { SvgProps } from 'react-native-svg';
+} from 'react-native'
+import {BottomSheetBackdrop, BottomSheetModal} from '@gorhom/bottom-sheet'
+import {SvgProps} from 'react-native-svg'
 
-import { Button } from '@/components/Button';
-import { SelectButton, SmallSelectButton } from '@/components/Select';
-import { BaseSelectHandle } from './components/Handle';
+import {Button} from '@/components/Button'
+import {SelectButton, SmallSelectButton} from '@/components/Select'
+import {BaseSelectHandle} from './components/Handle'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  title: string;
-  children: ReactNode;
-  halfWidth?: boolean;
-  snapPoints?: number[] | string[];
-  small?: boolean;
-  SmallButtonIcon?: React.FC<SvgProps>;
-  value?: string | null;
-  showValue?: boolean;
-  hasPrefix?: boolean;
-  validateBeforeSubmit?: () => boolean;
-  onResetFilter?: () => void;
-  headerTitle?: string;
+  title: string
+  children: ReactNode
+  halfWidth?: boolean
+  snapPoints?: number[] | string[]
+  small?: boolean
+  SmallButtonIcon?: React.FC<SvgProps>
+  value?: string | null
+  showValue?: boolean
+  hasPrefix?: boolean
+  validateBeforeSubmit?: () => boolean
+  onResetFilter?: () => void
+  headerTitle?: string
 }
 
 export class BaseSelect extends React.Component<Props, {}> {
-  private keyboardDidHideSubscription: EventSubscription | undefined;
-  private resetFilterSubscription: EventSubscription | undefined;
-  private modalRef: React.RefObject<BottomSheetModal>;
+  private keyboardDidHideSubscription: EventSubscription | undefined
+  private resetFilterSubscription: EventSubscription | undefined
+  private modalRef: React.RefObject<BottomSheetModal>
 
   constructor(props: Props) {
-    super(props);
+    super(props)
 
-    this.modalRef = React.createRef<BottomSheetModal>();
+    this.modalRef = React.createRef<BottomSheetModal>()
   }
 
   componentDidMount() {
     this.keyboardDidHideSubscription = Keyboard.addListener(
       'keyboardDidHide',
-      this.handleKeyboardHide.bind(this)
-    );
+      this.handleKeyboardHide.bind(this),
+    )
 
     this.resetFilterSubscription = DeviceEventEmitter.addListener(
       'RESET_FILTERS',
       () => {
-        this.props.onResetFilter?.();
-      }
-    );
+        this.props.onResetFilter?.()
+      },
+    )
   }
   componentWillUnmount() {
-    this.keyboardDidHideSubscription?.remove();
-    this.resetFilterSubscription?.remove();
+    this.keyboardDidHideSubscription?.remove()
+    this.resetFilterSubscription?.remove()
   }
 
   public close() {
-    this.modalRef.current?.dismiss();
+    this.modalRef.current?.dismiss()
   }
 
   public open() {
-    this.modalRef.current?.present();
+    this.modalRef.current?.present()
   }
 
   private handleKeyboardHide() {
-    this.modalRef.current?.snapToIndex(0);
+    this.modalRef.current?.snapToIndex(0)
   }
 
   render() {
@@ -83,19 +83,19 @@ export class BaseSelect extends React.Component<Props, {}> {
       showValue = true,
       hasPrefix = false,
       validateBeforeSubmit,
-      headerTitle
-    } = this.props;
+      headerTitle,
+    } = this.props
 
-    const valueWithPrefix = value ? [title, value].join(': ') : title;
-    const valueString = hasPrefix ? valueWithPrefix : value || title;
-    const buttonTitle = showValue ? valueString : title;
+    const valueWithPrefix = value ? [title, value].join(': ') : title
+    const valueString = hasPrefix ? valueWithPrefix : value || title
+    const buttonTitle = showValue ? valueString : title
 
     return (
       <>
         <BottomSheetModal
           snapPoints={snapPoints}
           ref={this.modalRef}
-          backdropComponent={(props) => (
+          backdropComponent={props => (
             <BottomSheetBackdrop
               {...props}
               opacity={0.3}
@@ -103,22 +103,24 @@ export class BaseSelect extends React.Component<Props, {}> {
               disappearsOnIndex={-1}
             />
           )}
-          handleComponent={BaseSelectHandle}
-        >
-          <View style={{ flex: 1, paddingBottom: 35 }}>
+          handleComponent={BaseSelectHandle}>
+          <View style={{flex: 1, paddingBottom: 35}}>
             <View style={styles.modalHeaderContainer}>
-              <Text style={styles.modalHeaderTitle}>{headerTitle ?? title}</Text>
+              <Text style={styles.modalHeaderTitle}>
+                {headerTitle ?? title}
+              </Text>
             </View>
             {children}
             <Button
               onPress={() => {
-                if (validateBeforeSubmit && !validateBeforeSubmit()) return;
+                if (validateBeforeSubmit && !validateBeforeSubmit()) {
+                  return
+                }
 
-                this.close();
+                this.close()
               }}
-            >
-              Apply
-            </Button>
+              title={'Apply'}
+            />
           </View>
         </BottomSheetModal>
         {small && SmallButtonIcon ? (
@@ -135,6 +137,6 @@ export class BaseSelect extends React.Component<Props, {}> {
           />
         )}
       </>
-    );
+    )
   }
 }

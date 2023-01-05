@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import { colors } from '@/constants/colors';
-import { appFont } from '@/constants/fonts';
+import {colors} from '@/constants/colors'
+import {appFont} from '@/constants/fonts'
 
 export default StyleSheet.create({
   modalHeaderContainer: {
@@ -17,4 +17,4 @@ export default StyleSheet.create({
     letterSpacing: -0.5,
     fontFamily: appFont.Semibold,
   },
-});
+})

@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
-import { SegmentedControl } from '@/components/SegmentedControl';
+import {SegmentedControl} from '@/components/SegmentedControl'
 
-import { CategoriesList, FiltersTypesEnum } from '@/constants/categories';
+import {CategoriesList, FiltersTypesEnum} from '@/constants/categories'
 
-import { selectComponentBySelectType } from './utils';
+import {selectComponentBySelectType} from './utils'
 
-export type FilterValueType = string | string[] | undefined | [number, number];
+export type FilterValueType = string | string[] | undefined | [number, number]
 export interface IFilterValues {
-  [key: string]: FilterValueType;
+  [key: string]: FilterValueType
 }
 
 interface Props {
-  categoryIndex: number;
-  replaceListsWithRadio?: boolean;
-  values: IFilterValues;
-  onValueChange: (key: string, newValue: FilterValueType) => void;
+  categoryIndex: number
+  replaceListsWithRadio?: boolean
+  values: IFilterValues
+  onValueChange: (key: string, newValue: FilterValueType) => void
 }
 
 export const FiltersList: React.FC<Props> = ({
@@ -27,14 +27,17 @@ export const FiltersList: React.FC<Props> = ({
   return (
     <>
       {CategoriesList[categoryIndex].filters.map(
-        ({ type, options, title, selectType, showIf, units }) => {
+        ({type, options, title, selectType, showIf, units}) => {
           if (showIf) {
-            const value = values[showIf.filterName];
+            const value = values[showIf.filterName]
 
-            if (!value && !showIf.default) return null;
+            if (!value && !showIf.default) {
+              return null
+            }
 
-            if (typeof value === 'string' && !showIf.in.includes(value))
-              return null;
+            if (typeof value === 'string' && !showIf.in.includes(value)) {
+              return null
+            }
           }
 
           const props = {
@@ -44,12 +47,12 @@ export const FiltersList: React.FC<Props> = ({
             onChange: (value: FilterValueType) => onValueChange(title, value),
             value: values[title],
             units,
-          };
+          }
 
-          let ComponentToRender = null;
+          let ComponentToRender = null
 
           if (type === FiltersTypesEnum.SEGMENTED) {
-            ComponentToRender = SegmentedControl;
+            ComponentToRender = SegmentedControl
           }
 
           if (
@@ -61,13 +64,13 @@ export const FiltersList: React.FC<Props> = ({
           ) {
             ComponentToRender = selectComponentBySelectType(
               selectType,
-              replaceListsWithRadio
-            );
+              replaceListsWithRadio,
+            )
           }
 
-          return ComponentToRender && <ComponentToRender {...props} />;
-        }
+          return ComponentToRender && <ComponentToRender {...props} />
+        },
       )}
     </>
-  );
-};
+  )
+}

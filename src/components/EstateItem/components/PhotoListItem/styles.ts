@@ -1,8 +1,8 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native'
 
-import { colors } from '@/constants/colors';
+import {colors} from '@/constants/colors'
 
-const { width } = Dimensions.get('screen');
+const {width} = Dimensions.get('screen')
 
 export default StyleSheet.create({
   container: {
@@ -12,4 +12,4 @@ export default StyleSheet.create({
     borderRadius: 20,
     marginHorizontal: 5,
   },
-});
+})

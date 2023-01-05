@@ -1,18 +1,18 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from 'react'
+import {View} from 'react-native'
 
-import CheckboxCheckIcon from '@/assets/icons/checkboxCheckIcon.svg';
+import CheckboxCheckIcon from '@/assets/icons/checkboxCheckIcon.svg'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  isChecked: boolean;
+  isChecked: boolean
 }
 
-export const Checkbox: React.FC<Props> = ({ isChecked = false }) => {
+export const Checkbox: React.FC<Props> = ({isChecked = false}) => {
   return (
     <View style={[styles.container, isChecked && styles.selectedContainer]}>
       {isChecked && <CheckboxCheckIcon />}
     </View>
-  );
-};
+  )
+}

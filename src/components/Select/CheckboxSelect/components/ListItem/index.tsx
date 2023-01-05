@@ -1,14 +1,14 @@
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React from 'react'
+import {Text, TouchableOpacity} from 'react-native'
 
-import { Checkbox } from '@/components/Checkbox';
+import {Checkbox} from '@/components/Checkbox'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  title: string;
-  isChecked: boolean;
-  onPress: () => void;
+  title: string
+  isChecked: boolean
+  onPress: () => void
 }
 
 export const CheckboxSelectListItem: React.FC<Props> = ({
@@ -21,5 +21,5 @@ export const CheckboxSelectListItem: React.FC<Props> = ({
       <Checkbox isChecked={isChecked} />
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}

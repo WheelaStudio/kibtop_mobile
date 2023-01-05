@@ -1,16 +1,16 @@
-import React, { useMemo, useState } from 'react';
-import { Alert, View } from 'react-native';
-import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
+import React, {useMemo, useState} from 'react'
+import {Alert, View} from 'react-native'
+import {BottomSheetTextInput} from '@gorhom/bottom-sheet'
 
-import { SearchInput } from '@/components/SearchInput';
-import { BaseSelect } from '@/components/Select';
+import {CustomInput} from '@/components/CustomInput'
+import {BaseSelect} from '@/components/Select'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  title: string;
-  halfWidth?: boolean;
-  units?: string;
+  title: string
+  halfWidth?: boolean
+  units?: string
 }
 
 export const RangeSelect: React.FC<Props> = ({
@@ -18,44 +18,52 @@ export const RangeSelect: React.FC<Props> = ({
   halfWidth = false,
   units,
 }) => {
-  const [from, setFrom] = useState<string>('');
-  const [to, setTo] = useState<string>('');
+  const [from, setFrom] = useState<string>('')
+  const [to, setTo] = useState<string>('')
 
   const valueString = useMemo(() => {
-    if (!from && to) return `${to} - ${to}`;
+    if (!from && to) {
+      return `${to} - ${to}`
+    }
 
-    if (!to && from) return `${from} - ${from}`;
+    if (!to && from) {
+      return `${from} - ${from}`
+    }
 
-    if (from && to) return `${from} - ${to}`;
+    if (from && to) {
+      return `${from} - ${to}`
+    }
 
-    return null;
-  }, [from, to]);
+    return null
+  }, [from, to])
 
   function handleFromChange(newValue: string) {
-    if (!validateInput(newValue)) return;
+    if (!validateInput(newValue)) {
+      return
+    }
 
-    setFrom(newValue);
+    setFrom(newValue)
   }
 
   function handleToChange(newValue: string) {
-    if (!validateInput(newValue)) return;
+    if (!validateInput(newValue)) {
+      return
+    }
 
-    setTo(newValue);
+    setTo(newValue)
   }
 
   function validateInput(inputString: string) {
-    if (/^\d*$/.test(inputString)) return true;
-
-    return false;
+    return /^\d*$/.test(inputString)
   }
 
   function validateBeforeSubmit() {
     if (parseInt(from) > parseInt(to)) {
-      Alert.alert('"From" cannot be greater than "to"');
-      return false;
+      Alert.alert('"From" cannot be greater than "to"')
+      return false
     }
 
-    return true;
+    return true
   }
 
   return (
@@ -67,12 +75,11 @@ export const RangeSelect: React.FC<Props> = ({
       value={valueString}
       validateBeforeSubmit={validateBeforeSubmit}
       onResetFilter={() => {
-        setFrom('');
-        setTo('');
-      }}
-    >
+        setFrom('')
+        setTo('')
+      }}>
       <View style={styles.container}>
-        <SearchInput
+        <CustomInput
           placeholder="from"
           sqared
           halfWidth
@@ -81,7 +88,7 @@ export const RangeSelect: React.FC<Props> = ({
           value={from}
           onChangeText={handleFromChange}
         />
-        <SearchInput
+        <CustomInput
           placeholder="to"
           sqared
           halfWidth
@@ -92,5 +99,5 @@ export const RangeSelect: React.FC<Props> = ({
         />
       </View>
     </BaseSelect>
-  );
-};
+  )
+}

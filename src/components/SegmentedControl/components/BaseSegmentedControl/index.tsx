@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react'
 import {
   Pressable,
   StyleSheet,
@@ -6,72 +6,75 @@ import {
   TextStyle,
   View,
   ViewStyle,
-} from 'react-native';
+} from 'react-native'
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-} from 'react-native-reanimated';
-import { widthPercentageToDP } from 'react-native-responsive-screen';
+} from 'react-native-reanimated'
+import {widthPercentageToDP} from 'react-native-responsive-screen'
+import {appFont} from '@/constants/fonts'
+import {colors} from '@/constants/colors'
+import {shadowColor} from '@/utils/shadowColor'
 
 interface SegmentedControlProps {
   /**
    * The Segments Text Array
    */
-  segments: Array<string>;
+  segments: Array<string>
   /**
    * The Current Active Segment Index
    */
-  currentIndex: number;
+  currentIndex: number
   /**
    * A callback onPress of a Segment
    */
-  onChange: (index: number) => void;
+  onChange: (index: number) => void
   /**
    * An array of Badge Values corresponding to the Segment
    */
-  badgeValues?: Array<number | null>;
+  badgeValues?: Array<number | null>
   /**
    * Is right-to-left mode.
    */
-  isRTL?: boolean;
+  isRTL?: boolean
   /**
    * The container margin for the segmented control
    * Used to calculate the width of Segmented Control
    */
-  containerMargin?: number;
+  containerMargin?: number
   /**
    * Active Segment Text Style
    */
-  activeTextStyle?: TextStyle;
+  activeTextStyle?: TextStyle
   /**
    * InActive Segment Text Style
    */
-  inactiveTextStyle?: TextStyle;
+  inactiveTextStyle?: TextStyle
   /**
    * Segment Container Styles
    */
-  segmentedControlWrapper?: ViewStyle;
+  segmentedControlWrapper?: ViewStyle
   /**
    * Pressable Container Styles
    */
-  pressableWrapper?: ViewStyle;
+  pressableWrapper?: ViewStyle
   /**
    * The moving Tile Container Styles
    */
-  tileStyle?: ViewStyle;
+  tileStyle?: ViewStyle
   /**
    * Active Badge Styles
    */
-  activeBadgeStyle?: ViewStyle;
+  activeBadgeStyle?: ViewStyle
   /**
    * Inactive Badge Styles
    */
-  inactiveBadgeStyle?: ViewStyle;
+  inactiveBadgeStyle?: ViewStyle
   /**
    * Badge Text Styles
    */
-  badgeTextStyle?: TextStyle;
+  badgeTextStyle?: TextStyle
 }
 
 const defaultShadowStyle = {
@@ -84,7 +87,7 @@ const defaultShadowStyle = {
   shadowRadius: 1,
 
   elevation: 1,
-};
+}
 
 const DEFAULT_SPRING_CONFIG = {
   stiffness: 150,
@@ -93,7 +96,7 @@ const DEFAULT_SPRING_CONFIG = {
   overshootClamping: false,
   restSpeedThreshold: 0.001,
   restDisplacementThreshold: 0.001,
-};
+}
 
 const BaseSegmentedControl: React.FC<SegmentedControlProps> = ({
   segments,
@@ -111,47 +114,51 @@ const BaseSegmentedControl: React.FC<SegmentedControlProps> = ({
   inactiveBadgeStyle,
   badgeTextStyle,
 }: SegmentedControlProps) => {
-  const width = widthPercentageToDP('100%') - containerMargin * 2;
-  const translateValue = width / segments.length;
-  const tabTranslateValue = useSharedValue(0);
+  const width = widthPercentageToDP('100%') - containerMargin * 2
+  const translateValue = width / segments.length
+  const tabTranslateValue = useSharedValue(0)
 
   // useCallBack with an empty array as input, which will call inner lambda only once and memoize the reference for future calls
   const memoizedTabPressCallback = React.useCallback(
-    (index) => {
-      onChange(index);
+    index => {
+      onChange(index)
     },
-    [onChange]
-  );
+    [onChange],
+  )
   useEffect(() => {
     // If phone is set to RTL, make sure the animation does the correct transition.
-    const transitionMultiplier = isRTL ? -1 : 1;
+    const transitionMultiplier = isRTL ? -1 : 1
     tabTranslateValue.value = withSpring(
       currentIndex * (translateValue * transitionMultiplier),
-      DEFAULT_SPRING_CONFIG
-    );
+      DEFAULT_SPRING_CONFIG,
+    )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex]);
+  }, [currentIndex])
 
   const tabTranslateAnimatedStyles = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: tabTranslateValue.value }],
-    };
-  });
+      transform: [{translateX: tabTranslateValue.value}],
+    }
+  })
 
   const finalisedActiveTextStyle: TextStyle = {
-    fontSize: 15,
     fontWeight: '600',
     textAlign: 'center',
-    color: '#111827',
+    fontFamily: appFont.Semibold,
+    fontSize: 16,
+    color: colors.dark,
+    letterSpacing: -0.5,
     ...activeTextStyle,
-  };
+  }
 
   const finalisedInActiveTextStyle: TextStyle = {
-    fontSize: 15,
     textAlign: 'center',
-    color: '#4b5563',
+    fontFamily: appFont.Semibold,
+    fontSize: 16,
+    color: colors.dark,
+    letterSpacing: -0.5,
     ...inactiveTextStyle,
-  };
+  }
 
   const finalisedActiveBadgeStyle: ViewStyle = {
     backgroundColor: '#27272a',
@@ -159,7 +166,7 @@ const BaseSegmentedControl: React.FC<SegmentedControlProps> = ({
     alignItems: 'center',
     justifyContent: 'center',
     ...activeBadgeStyle,
-  };
+  }
 
   const finalisedInActiveBadgeStyle: ViewStyle = {
     backgroundColor: '#6b7280',
@@ -167,7 +174,7 @@ const BaseSegmentedControl: React.FC<SegmentedControlProps> = ({
     justifyContent: 'center',
     alignItems: 'center',
     ...inactiveBadgeStyle,
-  };
+  }
 
   const finalisedBadgeTextStyle: TextStyle = {
     fontSize: 11,
@@ -175,12 +182,11 @@ const BaseSegmentedControl: React.FC<SegmentedControlProps> = ({
     textAlign: 'center',
     color: '#FFFFFF',
     ...badgeTextStyle,
-  };
+  }
 
   return (
     <Animated.View
-      style={[styles.defaultSegmentedControlWrapper, segmentedControlWrapper]}
-    >
+      style={[styles.defaultSegmentedControlWrapper, segmentedControlWrapper]}>
       <Animated.View
         style={[
           styles.movingSegmentStyle,
@@ -198,16 +204,14 @@ const BaseSegmentedControl: React.FC<SegmentedControlProps> = ({
           <Pressable
             onPress={() => memoizedTabPressCallback(index)}
             key={index}
-            style={[styles.touchableContainer, pressableWrapper]}
-          >
+            style={[styles.touchableContainer, pressableWrapper]}>
             <View style={styles.textWrapper}>
               <Text
                 style={[
                   currentIndex === index
                     ? finalisedActiveTextStyle
                     : finalisedInActiveTextStyle,
-                ]}
-              >
+                ]}>
                 {segment}
               </Text>
               {badgeValues[index] && (
@@ -217,8 +221,7 @@ const BaseSegmentedControl: React.FC<SegmentedControlProps> = ({
                     currentIndex === index
                       ? finalisedActiveBadgeStyle
                       : finalisedInActiveBadgeStyle,
-                  ]}
-                >
+                  ]}>
                   <Text style={finalisedBadgeTextStyle}>
                     {badgeValues[index]}
                   </Text>
@@ -226,11 +229,11 @@ const BaseSegmentedControl: React.FC<SegmentedControlProps> = ({
               )}
             </View>
           </Pressable>
-        );
+        )
       })}
     </Animated.View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   defaultSegmentedControlWrapper: {
@@ -257,6 +260,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
     borderRadius: 6,
     backgroundColor: '#FFFFFF',
+    shadowColor: shadowColor('rgba(0, 0, 0, 0.12)'),
+    shadowRadius: 8,
+    shadowOpacity: 1,
+    shadowOffset: {
+      height: 3,
+      width: 0,
+    },
+    elevation: 8,
   },
   // Badge Styles
   defaultBadgeContainerStyle: {
@@ -267,6 +278,6 @@ const styles = StyleSheet.create({
     borderRadius: 9999,
     alignContent: 'flex-end',
   },
-});
+})
 
-export { BaseSegmentedControl };
+export {BaseSegmentedControl}

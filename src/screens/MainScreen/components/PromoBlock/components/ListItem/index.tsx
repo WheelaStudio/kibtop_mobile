@@ -1,9 +1,9 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React from 'react'
+import {Text, View} from 'react-native'
 
-import ArrowRightIcon from '@/assets/icons/arrowRightIcon.svg';
+import ArrowRightIcon from '@/assets/icons/arrowRightIcon.svg'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {}
 
@@ -19,5 +19,5 @@ export const MainScreenPromoBlockListItem: React.FC<Props> = ({}) => {
         <ArrowRightIcon />
       </View>
     </View>
-  );
-};
+  )
+}

@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native'
 
-import { colors } from '@/constants/colors';
-import { appFont } from '@/constants/fonts';
+import {colors} from '@/constants/colors'
+import {appFont} from '@/constants/fonts'
 
 export default StyleSheet.create({
   container: {
@@ -32,4 +32,4 @@ export default StyleSheet.create({
     color: colors.dark,
     marginLeft: 15,
   },
-});
+})

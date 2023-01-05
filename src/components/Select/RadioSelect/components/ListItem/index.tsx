@@ -1,12 +1,12 @@
-import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import React from 'react'
+import {Text, TouchableOpacity, View} from 'react-native'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  title: string;
-  isSelected: boolean;
-  onPress: () => void;
+  title: string
+  isSelected: boolean
+  onPress: () => void
 }
 
 export const RadioSelectListItem: React.FC<Props> = ({
@@ -23,5 +23,5 @@ export const RadioSelectListItem: React.FC<Props> = ({
         <Text style={styles.title}>{title}</Text>
       </View>
     </TouchableOpacity>
-  );
-};
+  )
+}

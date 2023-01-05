@@ -1,43 +1,45 @@
-import React, { useMemo, useRef, useState } from 'react';
-import { FlatList, Platform, View } from 'react-native';
-import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
+import React, {useMemo, useRef, useState} from 'react'
+import {FlatList, Platform, View} from 'react-native'
+import {BottomSheetTextInput} from '@gorhom/bottom-sheet'
 
-import { SearchInput } from '@/components/SearchInput';
-import { Button } from '@/components/Button';
-import { BaseSelect } from '@/components/Select';
-import { SearchSelectListItem } from './components/ListItem';
+import {CustomInput} from '@/components/CustomInput'
+import {Button} from '@/components/Button'
+import {BaseSelect} from '@/components/Select'
+import {SearchSelectListItem} from './components/ListItem'
 
-import HeaderSearchIcon from '@/assets/icons/headerSearchIcon.svg';
+import HeaderSearchIcon from '@/assets/icons/headerSearchIcon.svg'
 
-import styles from './styles';
+import styles from './styles'
 
 interface Props {
-  title: string;
+  title: string
 }
 
-export const SearchSelect: React.FC<Props> = ({ title }) => {
-  const baseSelectRef = useRef<BaseSelect | null>(null);
+export const SearchSelect: React.FC<Props> = ({title}) => {
+  const baseSelectRef = useRef<BaseSelect | null>(null)
 
-  const [searchValue, setSearchValue] = useState<string>('');
-  const [selectedValue, setSelectedValue] = useState<string>('');
+  const [searchValue, setSearchValue] = useState<string>('')
+  const [selectedValue, setSelectedValue] = useState<string>('')
 
-  const data = ['BMW', 'Audi', 'Mercedes-Benz'];
+  const data = ['BMW', 'Audi', 'Mercedes-Benz']
 
   const filteredData = useMemo(() => {
-    const result = data.filter((x) => x.includes(searchValue));
+    const result = data.filter(x => x.includes(searchValue))
 
-    if (result.length === 0) return data;
+    if (result.length === 0) {
+      return data
+    }
 
-    return result;
-  }, [searchValue, data]);
+    return result
+  }, [searchValue, data])
 
   function handleClose() {
-    baseSelectRef.current?.close();
+    baseSelectRef.current?.close()
   }
 
   function handleListItemPress(value: string) {
-    setSelectedValue(value);
-    handleClose();
+    setSelectedValue(value)
+    handleClose()
   }
 
   return (
@@ -47,12 +49,11 @@ export const SearchSelect: React.FC<Props> = ({ title }) => {
       snapPoints={['70%']}
       value={selectedValue || null}
       onResetFilter={() => {
-        setSelectedValue('');
-        setSearchValue('');
-      }}
-    >
+        setSelectedValue('')
+        setSearchValue('')
+      }}>
       <View style={styles.headerContainer}>
-        <SearchInput
+        <CustomInput
           placeholder="Brand name"
           Icon={HeaderSearchIcon}
           CustomTextInputComponent={
@@ -61,13 +62,16 @@ export const SearchSelect: React.FC<Props> = ({ title }) => {
           value={searchValue}
           onChangeText={setSearchValue}
         />
-        <Button ghost fullWidth={false} onPress={handleClose}>
-          Cancel
-        </Button>
+        <Button
+          ghost
+          fullWidth={false}
+          onPress={handleClose}
+          title={'Cancel'}
+        />
       </View>
       <FlatList
         data={filteredData}
-        renderItem={({ item, index }) => (
+        renderItem={({item, index}) => (
           <SearchSelectListItem
             title={item}
             noBorder={data.length - 1 === index}
@@ -76,5 +80,5 @@ export const SearchSelect: React.FC<Props> = ({ title }) => {
         )}
       />
     </BaseSelect>
-  );
-};
+  )
+}

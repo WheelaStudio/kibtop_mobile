@@ -1,22 +1,22 @@
-import React from 'react';
-import { FlatList } from 'react-native';
-import { SvgProps } from 'react-native-svg';
+import React from 'react'
+import {FlatList} from 'react-native'
+import {SvgProps} from 'react-native-svg'
 
-import { ListListItem } from './components/ListItem';
+import {ListListItem} from './components/ListItem'
 
 interface Props {
   data: {
-    title: string;
-    iconImage?: number | React.FC<SvgProps>;
-  }[];
-  onItemPress: (title: string, index: number) => void;
+    title: string
+    iconImage?: number | React.FC<SvgProps>
+  }[]
+  onItemPress: (title: string, index: number) => void
 }
 
-export const List: React.FC<Props> = ({ data, onItemPress }) => {
+export const List: React.FC<Props> = ({data, onItemPress}) => {
   return (
     <FlatList
       data={data}
-      renderItem={({ item, index }) => (
+      renderItem={({item, index}) => (
         <ListListItem
           title={item.title}
           iconImage={item.iconImage}
@@ -25,5 +25,5 @@ export const List: React.FC<Props> = ({ data, onItemPress }) => {
         />
       )}
     />
-  );
-};
+  )
+}

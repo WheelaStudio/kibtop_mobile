@@ -4,29 +4,29 @@ import {
   RadioSelect,
   RangeSelect,
   SearchSelect,
-} from '@/components/Select';
-import { SelectTypesEnum } from '@/constants/categories';
+} from '@/components/Select'
+import {SelectTypesEnum} from '@/constants/categories'
 
 export function selectComponentBySelectType(
   selectType: SelectTypesEnum,
-  replaceListsWithRadio: boolean = false
+  replaceListsWithRadio: boolean = false,
 ) {
   if (selectType === SelectTypesEnum.LIST && replaceListsWithRadio) {
-    return RadioSelect;
+    return RadioSelect
   }
 
   switch (selectType) {
     case SelectTypesEnum.RADIO:
-      return RadioSelect;
+      return RadioSelect
     case SelectTypesEnum.CHECKBOX:
-      return CheckboxSelect;
+      return CheckboxSelect
     case SelectTypesEnum.LIST:
-      return ListSelect;
+      return ListSelect
     case SelectTypesEnum.SEARCH:
-      return SearchSelect;
+      return SearchSelect
     case SelectTypesEnum.RANGE:
-      return RangeSelect;
+      return RangeSelect
     default:
-      return null;
+      return null
   }
 }
