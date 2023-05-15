@@ -1,0 +1,22 @@
+<svg width="37" height="30" viewBox="0 0 37 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1086_8289)">
+<g filter="url(#filter0_d_1086_8289)">
+<path d="M5.1 12.3881L9.9375 7.50061C10.0537 7.38345 10.192 7.29045 10.3443 7.22699C10.4966 7.16353 10.66 7.13086 10.825 7.13086C10.99 7.13086 11.1534 7.16353 11.3057 7.22699C11.458 7.29045 11.5963 7.38345 11.7125 7.50061C11.9453 7.73481 12.076 8.05163 12.076 8.38186C12.076 8.71209 11.9453 9.0289 11.7125 9.26311L7.2625 13.7506H32.75C33.0815 13.7506 33.3995 13.8823 33.6339 14.1167C33.8683 14.3511 34 14.6691 34 15.0006V15.0006C34 15.3321 33.8683 15.6501 33.6339 15.8845C33.3995 16.1189 33.0815 16.2506 32.75 16.2506H7.1875L11.7125 20.7631C11.8297 20.8793 11.9227 21.0176 11.9861 21.1699C12.0496 21.3222 12.0822 21.4856 12.0822 21.6506C12.0822 21.8156 12.0496 21.979 11.9861 22.1313C11.9227 22.2837 11.8297 22.4219 11.7125 22.5381C11.5963 22.6553 11.458 22.7483 11.3057 22.8117C11.1534 22.8752 10.99 22.9079 10.825 22.9079C10.66 22.9079 10.4966 22.8752 10.3443 22.8117C10.192 22.7483 10.0537 22.6553 9.9375 22.5381L5.1 17.6881C4.39774 16.985 4.0033 16.0319 4.0033 15.0381C4.0033 14.0444 4.39774 13.0912 5.1 12.3881Z" fill="white"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_1086_8289" x="-0.996704" y="2.13086" width="39.9967" height="25.7773" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="2.5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.65 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1086_8289"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1086_8289" result="shape"/>
+</filter>
+<clipPath id="clip0_1086_8289">
+<rect width="37" height="30" fill="white" transform="matrix(-1 0 0 1 37 0)"/>
+</clipPath>
+</defs>
+</svg>
