@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native'
+import {Dimensions, StyleSheet} from 'react-native'
 import {colors} from '@/constants/colors'
+const {height} = Dimensions.get('screen')
 
 export default StyleSheet.create({
   container: {
@@ -14,6 +15,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     // backgroundColor: 'red',
     paddingHorizontal: 15,
+  },
+  nextButton: {
+    position: 'absolute', 
+    top: height - 205,
   },
   forgotPassword: {
     color: colors.grayText,

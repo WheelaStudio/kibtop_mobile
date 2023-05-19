@@ -55,11 +55,11 @@ export const InputPhotoScreen: React.FC<{}> = observer(({}) => {
           />
         </View>
       </View>
-      <View style={{position: 'absolute', bottom: 110}}>
+      <View style={styles.nextButton}>
         <Button
           onPress={onPressNext}
           title={t('common:skip')}
-          containerStyles={{marginTop: 20}}
+          // containerStyles={{marginTop: 20}}
           ghost
         />
         <Button onPress={onPressNext} title={t('common:next')} />

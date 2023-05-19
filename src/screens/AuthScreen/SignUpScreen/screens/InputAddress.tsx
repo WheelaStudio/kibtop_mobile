@@ -80,7 +80,7 @@ export const InputAddressScreen: React.FC<{}> = ({}) => {
           </KeyboardAwareScrollView>
         </View>
       </View>
-      <View style={{position: 'absolute', bottom: 110}}>
+      <View style={styles.nextButton}>
         {/* <Button
           onPress={onPressNext}
           title={t('common:skip')}

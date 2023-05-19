@@ -53,11 +53,11 @@ export const InputEmailScreen: React.FC<{}> = observer(({}) => {
           </KeyboardAwareScrollView>
         </View>
       </View>
-      <View style={{position: 'absolute', bottom: 110}}>
+      <View style={styles.nextButton}>
         <Button
           onPress={onPressNext}
           title={t('common:next')}
-          containerStyles={{marginTop: 20}}
+          // containerStyles={{marginTop: 20}}
         />
       </View>
     </SafeAreaView>

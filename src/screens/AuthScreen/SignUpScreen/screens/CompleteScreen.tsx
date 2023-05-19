@@ -32,11 +32,11 @@ export const CompleteScreen: React.FC<{}> = ({}) => {
           </Text>
         </View>
       </View>
-      <View style={{position: 'absolute', bottom: 110}}>
+      <View style={styles.nextButton}>
         <Button
           onPress={onPressNext}
           title={t('common:watchAds')}
-          containerStyles={{marginTop: 20}}
+          // containerStyles={{marginTop: 20}}
         />
         <Button onPress={onPressNext} title={t('common:placeAd')} ghost />
       </View>
