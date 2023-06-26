@@ -7,7 +7,6 @@ const { width } = Dimensions.get('screen');
 
 export default StyleSheet.create({
   container: {
-    width,
     height: 60,
     flexDirection: 'row',
     alignItems: 'center',
@@ -25,4 +24,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  row : {
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center'
+  }
 });

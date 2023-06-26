@@ -15,6 +15,7 @@ import ChatIconFilled from '@/assets/icons/tabBarChatIconFilled.svg';
 import ChatIconOutlined from '@/assets/icons/tabBarChatIconOutlined.svg';
 import ProfileIconFilled from '@/assets/icons/tabBarProfileIconFilled.svg';
 import ProfileIconOutlined from '@/assets/icons/tabBarProfileIconOutlined.svg';
+import { ChatContent } from './../components/Chat/chat-content/chat.component';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +55,7 @@ export const TabNavigator = () => {
       />
       <Tab.Screen
         name="ChatsTab"
-        component={MainScreen}
+        component={ChatContent}
         options={{
           title: 'Chats',
           tabBarIcon: (props) => (
