@@ -9,9 +9,6 @@ import { CategoriesList, IFilter } from '@/constants/categories';
 
 import styles from './styles';
 
-interface SubcategoriesParams {
-  subcategories: IFilter[];
-}
 
 export const CategoriesListScreen: React.FC<{}> = () => {
   const navigation = useNavigation();
@@ -19,8 +16,9 @@ export const CategoriesListScreen: React.FC<{}> = () => {
   const handleCategoryPress = (index: number) => {
     DeviceEventEmitter.emit('CategoryChanged', index);
     const category = CategoriesList[index];
-    const params: SubcategoriesParams = { subcategories: category.filters };
-    navigation.navigate("Subcategories", params);
+    const options = category.filters;
+
+    navigation.navigate("Subcategories", options);
   };
 
   return (
