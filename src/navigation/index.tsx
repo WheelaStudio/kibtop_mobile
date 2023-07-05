@@ -17,6 +17,7 @@ import { ProductDetailScreen } from '@/screens/ProductDetailScreen';
 import { SearchScreen } from '@/screens/SearchScreen'
 
 import {observer} from 'mobx-react-lite'
+import Subcategories from '@/screens/SubcategoriesScreen/Subcategories'
 
 export type AppNavigatorParamsList = {
   MainScreen: undefined
@@ -110,6 +111,13 @@ export const AppNavigator: FC = observer(() => {
 <MainStack.Screen
         name="ProductDetailScreen"
         component={ProductDetailScreen}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
+      <MainStack.Screen
+        name="Subcategories"
+        component={Subcategories}
         options={() => ({
           headerShown: false,
         })}
